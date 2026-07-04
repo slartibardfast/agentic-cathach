@@ -60,10 +60,11 @@ all writing.
 ## 3. Counting, and the ten digits
 
 We write counts with ten marks. Each mark stands for a count, shown here beside that many
-strokes, so the meaning is fixed without words. Zero is the empty row, before one:
+strokes, so the meaning is fixed without words. Zero counts none, and its mark is a ring, so an
+empty place carries a mark of its own and is never mistaken for one rubbed away:
 
 ```host-lint:ignore
-   0
+   0        o
    1        |
    2        ||
    3        |||
@@ -84,8 +85,8 @@ open a second place to its left for the bundles and keep the ones on the right. 
 read by where it sits.
 
 Ten is the first count that needs this. It is one bundle with nothing left over. The empty ones
-place still has to be marked, and its mark is zero, the empty row from before. So ten takes two
-places: one bundle, and a zero for the empty ones. A single mark would lose that empty place and
+place still has to be marked, and its mark is zero, shown above as the ring for none. So ten
+takes two places: one bundle, and a zero for the empty ones. A single mark would lose that empty place and
 mean one instead. Holding an empty place open with a zero is the whole of writing by places.
 
 ```host-lint:ignore
@@ -101,14 +102,14 @@ mean one instead. Holding an empty place open with a zero is the whole of writin
 The grouping repeats upward. When ten bundles gather, tie them into one larger bundle and open a
 third place to their left, so each place still counts ten times the place on its right. Below,
 two larger bundles sit in the hundreds place and five ones in the ones place, while the tens
-place between them stays empty and is held open by a zero.
+place between them holds only the ring for none, and so is written zero.
 
 ```host-lint:ignore
    each larger bundle is ten ten-bundles tied, a ten-by-ten square of strokes:
 
    hundreds place                 tens place    ones place
-   ||||||||||  ||||||||||                        |||||
-   ||||||||||  ||||||||||           (empty)
+   ||||||||||  ||||||||||             o           |||||
+   ||||||||||  ||||||||||
    ||||||||||  ||||||||||
    ||||||||||  ||||||||||
    ||||||||||  ||||||||||
