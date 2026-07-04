@@ -79,20 +79,35 @@ Read the ten marks in that order. After nine, we do not invent a new mark; we us
 
 ## 4. Places, by grouping
 
-Counting many strokes one at a time is slow and easy to lose, so we group. Tie the strokes
-into bundles of ten. The count is then some bundles of ten with some ones left over. Write the
-number of ones with a digit on the right, and the number of ten-bundles with a digit to its
-left. If the ten-bundles are themselves many, bundle those into tens as well, and write that
-count one place further to the left. Each place counts ten times the place to its right:
+After nine there are no more single marks, so we group. Tie ten strokes into one bundle, then
+open a second place to its left for the bundles and keep the ones on the right. Each place is
+read by where it sits.
+
+Ten is the first count that needs this. It is one bundle with nothing left over. The empty ones
+place still has to be marked, and its mark is zero, the empty row from before. So ten takes two
+places: one bundle, and a zero for the empty ones. A single mark would lose that empty place and
+mean one instead. Holding an empty place open with a zero is the whole of writing by places.
+
+The grouping repeats upward. Once the bundles themselves reach ten, tie ten of them into one
+larger bundle and open a third place further left. Each place counts ten times the place on its
+right, and an empty place in the middle is held by a zero in the same way.
 
 ```host-lint:ignore
-   |||||||||| |||||||||| |||   =   2 bundles of ten and 3 ones   ->   2 3
+   nine        |||||||||                the last single mark       =  9
 
-   2 0 3   =   2 bundles-of-ten-bundles,  0 ten-bundles,  3 ones   =   two hundred and three
+   ten         ||||||||||               tie the ten into one bundle:
+                                        one bundle, and no ones     =  1 0
+                                        the empty ones place, held by zero
+
+   twelve      ||||||||||  ||           one bundle and two ones     =  1 2
+
+   bundles group into a larger bundle, opening a third place:
+   two larger bundles, no bundles, five ones                        =  2 0 5
+                        the empty middle place, held by zero
 ```
 
-Two habits from this section carry the rest: reading a place from its position, and taking the
-ones left over after complete bundles are set aside. Both come back at once.
+Two habits from here carry the rest: reading a place by its position, and setting aside complete
+bundles to keep the ones left over. Both return in the guards below.
 
 ## 5. Rows, and what can go wrong
 
