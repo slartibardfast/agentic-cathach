@@ -88,10 +88,6 @@ place still has to be marked, and its mark is zero, the empty row from before. S
 places: one bundle, and a zero for the empty ones. A single mark would lose that empty place and
 mean one instead. Holding an empty place open with a zero is the whole of writing by places.
 
-The grouping repeats upward. Once the bundles themselves reach ten, tie ten of them into one
-larger bundle and open a third place further left. Each place counts ten times the place on its
-right, and an empty place in the middle is held by a zero in the same way.
-
 ```host-lint:ignore
    nine        |||||||||                the last single mark       =  9
 
@@ -100,10 +96,28 @@ right, and an empty place in the middle is held by a zero in the same way.
                                         the empty ones place, held by zero
 
    twelve      ||||||||||  ||           one bundle and two ones     =  1 2
+```
 
-   bundles group into a larger bundle, opening a third place:
-   two larger bundles, no bundles, five ones                        =  2 0 5
-                        the empty middle place, held by zero
+The grouping repeats upward. When ten bundles gather, tie them into one larger bundle and open a
+third place to their left, so each place still counts ten times the place on its right. Below,
+two larger bundles sit in the hundreds place and five ones in the ones place, while the tens
+place between them stays empty and is held open by a zero.
+
+```host-lint:ignore
+   each larger bundle is ten ten-bundles tied, a ten-by-ten square of strokes:
+
+   hundreds place                 tens place    ones place
+   ||||||||||  ||||||||||                        |||||
+   ||||||||||  ||||||||||           (empty)
+   ||||||||||  ||||||||||
+   ||||||||||  ||||||||||
+   ||||||||||  ||||||||||
+   ||||||||||  ||||||||||
+   ||||||||||  ||||||||||
+   ||||||||||  ||||||||||
+   ||||||||||  ||||||||||
+   ||||||||||  ||||||||||
+             2                       0             5     =  2 0 5
 ```
 
 Two habits from here carry the rest: reading a place by its position, and setting aside complete
