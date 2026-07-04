@@ -134,6 +134,12 @@ design calls for.
 - **Binary is byte-exact.** A purely binary blob (nulls, high bytes, a deadbeef marker)
   round-trips through the digit and armor tiers and rides in the QR binary mode. The
   format carries arbitrary bytes; text is only one case, and it earns the readable tier.
+- **Colophon and two-tier integrity.** The sample opens with a scribal colophon that
+  records what the artifact is and carries the payload SHA-256 (uppercase hex). This
+  realises the design's two-tier integrity: SHA-256 for the machine tier in the colophon,
+  and the per-line Fletcher-16 glosses for the hand tier. The sample names Earth one
+  language per line across nine writing systems, so each script carries its own gloss and
+  the right-to-left words stand clear of bidi mixing.
 
 ## Go / no-go gates
 
