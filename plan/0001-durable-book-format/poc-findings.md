@@ -119,6 +119,23 @@ design calls for.
   aesthetics. Her open question is whether the dense machine layer scans from a phone at
   300 dpi print.
 
+## Carve refinements (this round)
+
+- **Per-line gloss.** Each carve line now carries a Fletcher-16 check in the right
+  margin, a manuscript gloss line by line. A misread is caught and located on its own
+  line, so it falls in the cheap located-erasure regime rather than reading as a blind
+  error. A whole-block check closes the foot of the block.
+- **UTF-8 carve (option).** Beside the Base32 ASCII carve, the POC emits a dense UTF-8
+  carve that packs 14 bits into each CJK codepoint from U+4E00. For the sample it uses
+  under half the characters of Base32. It suits cathach, which already preserves Unicode
+  and ships full font coverage. It trades away hand-transcribability and needs a font.
+  Its printed-area gain is also smaller than the character count suggests, because a Han
+  glyph is larger and inkier. It stays an option for dense text channels; Base32 remains
+  the hand-transcribable default for Fintan.
+- **Binary is byte-exact.** A purely binary blob (nulls, high bytes, a deadbeef marker)
+  round-trips through the digit and both carve modalities and rides in the QR binary
+  mode. The format carries arbitrary bytes; text is only one case.
+
 ## Go / no-go gates
 
 Decide these before the spec-driven pipeline starts:
