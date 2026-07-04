@@ -123,7 +123,9 @@ design calls for.
 
 Decide these before the spec-driven pipeline starts:
 
-1. **Alphabet.** Digits (A) or bespoke glyphs (B) for the human payload tier? Recommend A.
+1. **Alphabet (resolved).** Digits (A) for the human tier, and the format goes
+   multi-modal: the same bytes carried as digit groups (hand), an ASCII carve (text),
+   and a QR (scan). See [call/0002](../../call/0002-multi-modal-encoding.md).
 2. **Radix and overhead.** N=6 with 2 checks per 5 or 6 data digits (40% or 33%)?
 3. **Preamble typefaces.** Adopt the Noto Serif family for the trilingual preamble?
 4. **Physical measurement.** Run the print-damage-scan protocol on the real paper, toner,
