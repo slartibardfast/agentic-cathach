@@ -129,6 +129,8 @@ design calls for.
   right margin, a manuscript gloss line by line, in the spirit of the scribal
   letter-counts that kept a text exact. A misread is caught and located on its own line,
   so it falls in the cheap located-erasure regime. A whole-block check closes the foot.
+  The glosses and byte-hex are uppercase, so they share one cap-height register with the
+  uppercase Base32 armor and stay distinct under damage.
 - **Binary is byte-exact.** A purely binary blob (nulls, high bytes, a deadbeef marker)
   round-trips through the digit and armor tiers and rides in the QR binary mode. The
   format carries arbitrary bytes; text is only one case, and it earns the readable tier.
