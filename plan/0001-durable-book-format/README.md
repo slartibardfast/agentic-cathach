@@ -2,8 +2,8 @@
 
 - Status: proposed
 - Scope: cathach
-- Persona: none yet. The `cast/` examples still stand; build cathach's own
-  personas by `cast/applying-personas.md` before this milestone is worked.
+- Persona: [Bríd](../../cast/brid-archivist.md), the archivist-preservationist,
+  is the primary persona this milestone serves; the full cast is in `cast/`.
 
 ## Goal
 

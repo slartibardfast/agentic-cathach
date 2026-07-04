@@ -758,9 +758,9 @@ appears.
 - Specs. No `.allium` or `.tla` file exists yet, so the requirements and timing
   lanes stay inert. Wire `tools/allium` or `tools/specula` and their skills before
   authoring the first spec of either kind, following the ladder above.
-- Personas. `cast/` still holds the template examples `mara` and `wren`. Replace
-  them with cathach's own personas, built with the human by the process in
-  `cast/applying-personas.md`, before planning the work they serve.
+- Personas. `cast/` holds cathach's five personas, built with the operator by the
+  process in `cast/applying-personas.md`. Bríd the archivist-preservationist is the
+  primary. Their goals and scenarios feed the milestone stories in `plan/`.
 - The gate. The `host-lint` commit hooks are installed from the pinned
   `tools/host-lint` build rather than from a `.host-software` gating component,
   because this host adopts the tool rather than authoring it. The reasoning is
