@@ -5,8 +5,8 @@ reader to decode the book by hand, before any machine. It is the sparsest and mo
 protected part of the book, and the one part that must survive with nothing else.
 
 The final preamble is trilingual, so the same meaning is carried in three languages
-chosen by literate-speaker population (English, Mandarin, and a third still open; see
-[architecture.md](architecture.md)). This draft is the English text plus the shared
+chosen by literate-speaker population: English, Mandarin, and Spanish (see
+[call/0007](../../call/0007-preamble-languages.md)). This draft is the English text plus the shared
 figures, which are language-independent and do the real teaching. The figures are the
 spine; the prose only points at them.
 
@@ -139,6 +139,7 @@ if everything else is gone, because the program too is stored as recoverable row
 
 - The assumed-knowledge floor: how much a far-future reader is presumed to know. This
   gates how sections 3 and 4 are written, and it is unresolved.
-- The third language, and the three-column trilingual layout.
+- The three-column trilingual layout (the languages are locked to English, Mandarin, and
+  Spanish; see [call/0007](../../call/0007-preamble-languages.md)).
 - The figures: the strokes-to-digits chart and the worked rows become the real, drawn
   figures once the glyph alphabet is fixed.

@@ -171,9 +171,9 @@ visual distance against the measured silent-substitution rate.
 - verify: attested operator
 
 Settle what a far-future reader is presumed to know, then draft the trilingual
-preamble within the addition-and-multiplication budget. Fix the third language
-(Hindi or Spanish) by a current literate-speaker figure. A working draft is under
-way in [preamble-draft.md](preamble-draft.md).
+preamble within the addition-and-multiplication budget. The three languages are
+English, Mandarin, and Spanish (see `call/0007`). A working draft is under way in
+[preamble-draft.md](preamble-draft.md).
 
 ### Scope the cross-platform Rust pipeline {#scope-rust-pipeline}
 
