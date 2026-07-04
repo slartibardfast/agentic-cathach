@@ -172,7 +172,8 @@ visual distance against the measured silent-substitution rate.
 
 Settle what a far-future reader is presumed to know, then draft the trilingual
 preamble within the addition-and-multiplication budget. Fix the third language
-(Hindi or Spanish) by a current literate-speaker figure.
+(Hindi or Spanish) by a current literate-speaker figure. A working draft is under
+way in [preamble-draft.md](preamble-draft.md).
 
 ### Scope the cross-platform Rust pipeline {#scope-rust-pipeline}
 
