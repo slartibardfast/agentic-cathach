@@ -154,7 +154,8 @@ Run the measurement protocol on the target paper, toner, and printer to fix the
 erasure statistics, the silent-substitution rate, and the error-correction
 parameters (the repetition and Reed-Solomon split, the erasure depth per group and
 per page). This is the data-gathering the rest of the milestone waits on. Progress
-and the current go/no-go gates are in [poc-findings.md](poc-findings.md).
+and the current go/no-go gates are in [poc-findings.md](poc-findings.md); the working
+format design is in [architecture.md](architecture.md).
 
 ### Design the glyph alphabet against the measurements {#design-alphabet}
 
