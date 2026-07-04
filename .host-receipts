@@ -1,0 +1,11 @@
+[receipt "adopt"]
+    disposition = done
+    evidence = host-template @ 565410a860abab47b4782342374a1b9b2f08ddcb
+    tool = host-lifecycle@0.35.1
+    recorded = 2026-07-04
+
+[receipt "upgrade"]
+    disposition = done
+    evidence = baseline 46a1fd2 current; 0 ledger entries pending
+    tool = host-lifecycle@0.35.1
+    recorded = 2026-07-04

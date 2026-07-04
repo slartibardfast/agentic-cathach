@@ -1,0 +1,13 @@
+# The Where room: the software this host governs, as a bare store with worktrees
+# (STRUCTURE.md). host-lifecycle software --materialize realises the trees under
+# software/<name>/; --check audits each against its pin. The trees are gitignored.
+#
+# cathach is cross-platform Rust and currently a fresh scaffold, so no build,
+# toolchain, or artifact recipe is recorded yet; add per-platform [build "cathach"
+# "<platform>"] subsections when the software gains a build (see CLAUDE.md project
+# specifics and call/0001).
+
+[software "cathach"]
+url = https://github.com/slartibardfast/cathach
+pin = 617cb57630b06247d551a68562643f6fd54ca389
+branch = main

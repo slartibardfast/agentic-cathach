@@ -1,0 +1,3 @@
+# Paths excluded from the naming and prose audits. The append-only record is history,
+# not live prose: it is corrected forward by a new entry, never rewritten (CLAUDE.md).
+MEMORY.md

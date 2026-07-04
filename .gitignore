@@ -1,0 +1,14 @@
+# The Where room: bare stores and worktrees are materialized locally from
+# .host-software, never tracked here (STRUCTURE.md).
+/software/
+
+# Generated skill symlinks into the tool submodules; recreated by link-skills.sh
+# after `git submodule update --init` (worktree-absence coherence, call/0005).
+/.claude/skills/
+
+# Generated mdBook output (host-lifecycle book .): book.toml + its src (docs/) + the
+# built site. Generated on demand by the publish phase; never tracked.
+/book.toml
+/docs/
+/mdBook/
+/book/

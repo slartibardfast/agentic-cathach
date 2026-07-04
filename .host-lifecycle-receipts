@@ -1,0 +1,35 @@
+[receipt "classify"]
+    disposition = done
+    evidence = migration case a (fresh host, only LICENSE); stamp now present so classify reports c
+    tool = host-lifecycle@0.35.1
+    recorded = 2026-07-04
+
+[receipt "embed" "cathach"]
+    disposition = done
+    evidence = cathach pinned 617cb57630b06247d551a68562643f6fd54ca389; materialized under software/cathach
+    tool = host-lifecycle@0.35.1
+    recorded = 2026-07-04
+
+[receipt "remap"]
+    disposition = skip
+    reason = no ordinal-named files to rename; naming audit clean without a .host-remap dictionary
+    tool = host-lifecycle@0.35.1
+    recorded = 2026-07-04
+
+[receipt "publish"]
+    disposition = skip
+    reason = doc site not deployed; host-lifecycle book --check passes locally, every room renders a page
+    tool = host-lifecycle@0.35.1
+    recorded = 2026-07-04
+
+[receipt "release" "cathach"]
+    disposition = skip
+    reason = cathach has no build or release yet; data-gathering phase precedes any code
+    tool = host-lifecycle@0.35.1
+    recorded = 2026-07-04
+
+[receipt "verify"]
+    disposition = done
+    evidence = gate sweep green: validate plan/ call/, prose, reconcile, software --check, commit-hook tell test
+    tool = host-lifecycle@0.35.1
+    recorded = 2026-07-04

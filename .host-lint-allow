@@ -1,0 +1,6 @@
+# Sanctioned vocabulary for host-lint (one phrase per line, masked before detection).
+# These are genuine measurement quantities in plan/0001-durable-book-format that read
+# as bare decimals; they are physical dimensions, not milestone codes, so the naming
+# audit should not treat them as tells.
+2.8 mm
+0.34 mm
