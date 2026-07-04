@@ -31,10 +31,11 @@ by the same method. Each guard against damage is motivated before it is introduc
 7. The second guard: the weighted sum.
 8. Mending a whole page.
 9. The smaller base.
-10. The pages, with their headers and the table of contents.
-11. Integrity: confirming the whole book.
-12. The machine, and its printed program.
-13. What you can now do.
+10. A guard, worked in full.
+11. The pages, with their headers and the table of contents.
+12. Integrity: confirming the whole book.
+13. The machine, and its printed program.
+14. What you can now do.
 
 ## 1. What this book is
 
@@ -58,11 +59,11 @@ all writing.
 
 ## 3. Counting, and the ten digits
 
-We write counts with ten marks. Each mark stands for a count, shown here beside a row of
-strokes so the meaning is fixed without words:
+We write counts with ten marks. Each mark stands for a count, shown here beside that many
+strokes, so the meaning is fixed without words. Zero is the empty row, before one:
 
 ```host-lint:ignore
-   0        (no strokes)
+   0
    1        |
    2        ||
    3        |||
@@ -169,7 +170,47 @@ same row, worked in the smaller base:
    weighted  =  1×3 + 2×5 + 3×1 + 4×4 + 5×2  =  42  =  seven sixes and 0   ->   W = 0
 ```
 
-## 10. The pages, their headers, and the table of contents
+## 10. A guard, worked in full
+
+You have the parts; here they are put together on real content, in the smaller base.
+
+**A row of digits.** Take five data digits, work the two guards, and write the row as it stands
+in the book: the five data digits, then S, then W.
+
+```host-lint:ignore
+   data                     3 5 1 4 2
+   sum       ->  S = 3
+   weighted  ->  W = 0
+
+   the row, as written:     3 5 1 4 2  3 0
+                            |-- data --| S W
+```
+
+To read a row, take its first five digits as the data and its last two as the guards.
+
+**A piece of text.** The book stores a sequence of values, and a file of any kind is such a
+sequence. Text becomes values by a code table the book carries, one number for each character.
+Each value is written as four base-six digits, since four of them reach far past any single
+value, so every value fits. The digits are then grouped by five and guarded as above.
+
+```host-lint:ignore
+   text             H       i
+   value            72      105          (looked up in the code table)
+
+   each value as four base-six digits:
+       72   ->   0 2 0 0
+       105  ->   0 2 5 3
+
+   the digits, joined:      0 2 0 0 0 2 5 3
+   grouped by five, the last group filled out with 0:
+       0 2 0 0 0   ->   S = 2,  W = 4   ->   row   0 2 0 0 0  2 4
+       2 5 3 0 0   ->   S = 4,  W = 3   ->   row   2 5 3 0 0  4 3
+```
+
+To read the text back, reverse the steps: join each row's five data digits into one stream, cut
+the stream into fours, turn each four into its value, and look each value up in the code table.
+
+## 11. The pages, their headers, and the table of contents
 
 Each dense page has a short readable header. It gives the page's number in the whole book, and,
 for a file split across pages, which piece it is and where that piece begins. A reader uses the
@@ -179,14 +220,14 @@ there, gather its pages in order by their headers, and read them. A file smaller
 worth sits on a single page; a larger file spans several pages in sequence, and nothing about it
 is special except that there are more pages.
 
-## 11. Integrity: confirming the whole book
+## 12. Integrity: confirming the whole book
 
 Two checks confirm that nothing has changed. A person adds a running sum over the book, given in
 the table of contents, and compares it; this needs only addition. A machine compares a longer
 check value, printed as digits beside the running sum. A rebuilt program confirms it in a moment,
 though it is too long for a person to add by hand. If either check matches, the book is whole.
 
-## 12. The machine and its printed program
+## 13. The machine and its printed program
 
 The dense fields are read quickly by a small program. Its complete source is printed later in
 this book, in two computer languages, so a reader who can build a computer can type it back in
@@ -194,7 +235,7 @@ and run it. The hand method taught above is enough to recover that program if ev
 gone, because the program too is stored as recoverable rows. The program reads the dense fields;
 the fields hold the same information as the rows, packed smaller.
 
-## 13. What you can now do
+## 14. What you can now do
 
 With the counting and the two guards, you recover any single row, and any single page, by hand.
 With the headers and the table of contents, you find any file and confirm the book is whole. With
