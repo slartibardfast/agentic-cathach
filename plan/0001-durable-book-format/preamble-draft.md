@@ -10,10 +10,10 @@ chosen by literate-speaker population: English, Mandarin, and Spanish (see
 figures, which are language-independent and do the real teaching. The figures are the
 spine; the prose only points at them.
 
-**Assumed-knowledge floor.** This draft assumes the least it can: that the reader sees
-that marks carry meaning, and that the reader can count. It then teaches the digits,
-the places, the checks, and the repair. Lowering the floor further, or fixing it firmly,
-is the deepest open question of the whole format ([poc-findings.md](poc-findings.md)).
+**Assumed-knowledge floor.** The floor is fixed to tally strokes (see
+[call/0008](../../call/0008-assumed-knowledge-floor.md)): a reader is presumed only to see
+that marks carry meaning and to count marks one by one. Everything above that is taught,
+from strokes up. It is the lowest floor above counting itself.
 
 ## Order of teaching
 
@@ -64,18 +64,22 @@ strokes so the meaning is fixed without words:
 
 Read the ten marks in that order. After nine, we do not invent a new mark; we use places.
 
-## 4. Places
+## 4. Places, by grouping
 
-A number is a row of digits. The rightmost digit counts ones. The next digit to its left
-counts groups of ten. The next counts groups of ten tens, and so on, each place ten times
-the place to its right:
+Counting many strokes one at a time is slow and easy to lose, so we group. Tie the strokes
+into bundles of ten. The count is then some bundles of ten with some ones left over. Write
+the number of ones with a digit on the right, and the number of ten-bundles with a digit to
+its left. If the ten-bundles are themselves many, bundle those into tens as well, and write
+that count one place further to the left. Each place counts ten times the place to its right:
 
 ```host-lint:ignore
-   2 0 3   means   (2 groups of ten tens) + (0 groups of ten) + (3 ones)  =  two hundred and three
+   |||||||||| |||||||||| |||   =   2 bundles of ten and 3 ones   ->   written   2 3
+
+   2 0 3   =   2 bundles-of-ten-bundles,  0 ten-bundles,  3 ones   =   two hundred and three
 ```
 
-This is all the number-reading the preamble needs. The dense data uses the same digits,
-but only the first few of them (a small base), written in short rows.
+This is all the number-reading the preamble needs. The dense data uses the same digits, but
+only the first few of them (a small base), written in short rows.
 
 ## 5. The rows: data and two checks
 
@@ -137,8 +141,6 @@ if everything else is gone, because the program too is stored as recoverable row
 
 ## Open, for this draft
 
-- The assumed-knowledge floor: how much a far-future reader is presumed to know. This
-  gates how sections 3 and 4 are written, and it is unresolved.
 - The three-column trilingual layout (the languages are locked to English, Mandarin, and
   Spanish; see [call/0007](../../call/0007-preamble-languages.md)).
 - The figures: the strokes-to-digits chart and the worked rows become the real, drawn
