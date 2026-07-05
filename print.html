@@ -2152,6 +2152,31 @@ exit 0).</li>
 <li>Still legitimately pending (not defects): the four milestone tasks (blocked on the operator +
 hardware for #measure-channel), and the inert spec/build lanes (wait on cathach gaining code).</li>
 </ul>
+<h2 id="2026-07-05--settled-the-measurement-protocols-design-parameters"><a class="header" href="#2026-07-05--settled-the-measurement-protocols-design-parameters">2026-07-05 — Settled the measurement protocol's design parameters</a></h2>
+<ul>
+<li>The operator ruled the design-side open parameters of measurement-protocol.md (section 7 now
+"Design parameters, set"; section 8 holds the two hardware ones for the bench). Rulings:
+<ul>
+<li>Module sizes: four candidate modules at 600 dpi on clean dot counts, 0.17 mm (4 dots),
+0.21 mm (5, the ~0.22 mm target), 0.25 mm (6), 0.34 mm (8, legibility reference).
+Instructional register 3.0 mm cap-height, tested to the 2.8 mm floor.</li>
+<li>Accept thresholds (keying the section-5 decision table): silent-substitution bands at 0.1%
+and 1% per glyph; located-erasure boundary at 90%; visual-distance floor 99.9% correct pair
+discrimination undamaged; the 0-vs-6 pair is the acceptance gate.</li>
+<li>Ambition: FULL run up front (0.1% resolution). ~500 reads per glyph x module size x damage
+mode at a fixed dose (~12,000 reads/glyph aggregate), a 3-dose severity sweep per mode at the
+0.21 mm target, ~3,000 undamaged reads per glyph per size for the discrimination baseline,
+and ~30 damaged specimens for the two-tier registration battery.</li>
+<li>Phone-capture bar: convenience-only. A flat-page phone photo in good light must register the
+two-tier finders and decode the coarsest 0.34 mm module; no full dense decode off a phone is
+required (flatbed primary, call/0014).</li>
+</ul>
+</li>
+<li>Recorded in the protocol itself, not a new call/ (these refine call/0009/0010/0014; the operator
+can promote them to a decision later if wanted). Updated undone-review.md to match. Gate green.</li>
+<li>STILL OPEN before #measure-channel runs: the two hardware parameters (ISO 9706 paper stock;
+printer + monochrome toner), then the operator's approve-before-printing gate (protocol sec 6).</li>
+</ul>
 
                     </main>
 
