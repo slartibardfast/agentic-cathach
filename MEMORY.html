@@ -328,6 +328,20 @@ ok, prose and reconcile clean. <code>publish</code> remains a valid skip (no Sit
 deployment yet); that is the one remaining step to publish done, and it is an outward-facing
 choice for the operator.</li>
 </ul>
+<h2 id="2026-07-05--doc-site-published-publish-phase-done"><a class="header" href="#2026-07-05--doc-site-published-publish-phase-done">2026-07-05 — Doc site published; publish phase done</a></h2>
+<ul>
+<li>The operator authorized publishing, so the reference Site workflow is wired and GitHub Pages
+is enabled. The doc site is live at https://slartibardfast.github.io/agentic-cathach/, serving
+the generated mdBook from the gh-pages branch. The Site workflow (on push to main) builds the
+host-lifecycle publisher from the pinned submodule, runs <code>book</code> + <code>book --check</code>, <code>mdbook build</code>, and deploys <code>mdBook/out</code> to gh-pages; Pages was enabled via <code>gh api ... /pages</code>.</li>
+<li>GOTCHA: the publish phase's manifest recheck is <code>test -f .github/workflows/mdbook.yml</code>, but the
+template ships the reference workflow as <code>.github/workflows/site.yml</code>. The workflow file MUST
+be named <code>mdbook.yml</code> or the publish=done recheck fails and re-opens as a HAZARD. Renamed the
+file to <code>mdbook.yml</code>; its content is the template's reference verbatim (name: Site inside).</li>
+<li>Recorded publish done with <code>host-lifecycle receipt --record publish --disposition done</code>;
+<code>software --check</code> is green with the phase done. The receipts ledger is append-only, so the
+earlier skip stays below the new done.</li>
+</ul>
 
                     </main>
 
