@@ -263,6 +263,39 @@ add". Every weight is at most five and every digit at most the base, so the arra
 fully drawable, and nothing beyond grouping and adding is introduced. The weighted guard should
 not be dropped, since an unweighted sum cannot catch transpositions. https://makemathmoments.com/progression-of-multiplication/
 
+## Finder and registration robustness
+
+A follow-up gather, prompted by the finder decision, extended the paper-backup survey above
+with fiducial-marker systems and finder-damage behaviour it had not reached.
+
+- **Corner finders are a single point of failure.** QR's three corner patterns, Data
+  Matrix's L, and Aztec's central bullseye each fail the whole read when damage lands on the
+  finder, and QR's finder patterns carry no error correction. This is the registration
+  fragility that makes PaperBack fail in practice, since its grid registration is implicit
+  and it needs the page near parallel and oversampled. For a bound page where a ring or
+  crack can strike a corner, corner-only registration is the wrong choice.
+  https://www.mdpi.com/2076-3417/10/21/7814
+- **A distributed mesh resynchronizes locally.** Twibright Optar covers the page with a mesh
+  of registration crosses refined to sub-pixel precision, so damage to one cross stays
+  regional rather than global, and the mesh absorbs paper stretch and page curl. This is the
+  paper-specific answer to whole-page registration. http://ronja.twibright.com/optar/
+- **Error-correcting fiducial markers survive damage to the marker.** Purpose-built markers
+  carry the resilience QR finders lack: STag has a selectable Hamming distance, a circular
+  border for stable localization, and occlusion tolerance near a fifth of the marker;
+  ChArUco is a chessboard with embedded markers that interpolates across a missing marker;
+  AprilTag corrects several bit errors. A small lattice of these survives the loss of any one
+  marker, because the rest still fix orientation and the warp. https://arxiv.org/abs/1707.06292
+- **Module size against capture.** A module near 0.22 mm at 600 dpi is about five scanner
+  pixels, which a flatbed reads natively but a phone camera reads only marginally on a curved
+  page. The fiducial markers themselves are larger, so they are found regardless. The dense
+  tier therefore leans on the flatbed, and the phone path wants larger modules or several
+  fused captures.
+
+The recommendation is two-tier registration: error-correcting fiducial markers at the page
+corners and edges for global orientation and homography, and an interior mesh of dedicated
+timing marks with sub-pixel refinement for local grid pitch and page curl. This amends
+`call/0004`'s bare corner-registration stance.
+
 ## What this changes for cathach
 
 Decisions and obligations this survey creates or sharpens, to feed the spec, the measurement
