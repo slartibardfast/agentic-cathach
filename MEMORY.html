@@ -1,0 +1,376 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Memory - agentic-cathach</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">agentic-cathach</a></li><li class="chapter-item expanded affix "><li class="part-title">Cast: who</li><li class="chapter-item expanded "><a href="cast/index.html"><strong aria-hidden="true">1.</strong> Cast: the project's Who</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cast/aoife-casual-reader.html"><strong aria-hidden="true">1.1.</strong> Aoife: the Casual Reader</a></li><li class="chapter-item expanded "><a href="cast/applying-personas.html"><strong aria-hidden="true">1.2.</strong> Applying personas during planning</a></li><li class="chapter-item expanded "><a href="cast/brid-archivist.html"><strong aria-hidden="true">1.3.</strong> Bríd: the Archivist-Preservationist</a></li><li class="chapter-item expanded "><a href="cast/cormac-encoding-engineer.html"><strong aria-hidden="true">1.4.</strong> Cormac: the Encoding Engineer</a></li><li class="chapter-item expanded "><a href="cast/fintan-tool-rebuilder.html"><strong aria-hidden="true">1.5.</strong> Fintan: the Tool-Rebuilder</a></li><li class="chapter-item expanded "><a href="cast/nuala-numeral-linguist.html"><strong aria-hidden="true">1.6.</strong> Nuala: the Comparative Linguist of Number</a></li><li class="chapter-item expanded "><a href="cast/oisin-hand-decoder.html"><strong aria-hidden="true">1.7.</strong> Oisín: the Far-Future Hand-Decoder</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Plan: what & when</li><li class="chapter-item expanded "><a href="plan-index.html"><strong aria-hidden="true">2.</strong> Plan</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="plan/0001-durable-book-format/index.html"><strong aria-hidden="true">2.1.</strong> Durable book format for cathach</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Software: where</li><li class="chapter-item expanded "><a href="where.html"><strong aria-hidden="true">3.</strong> Software</a></li><li class="chapter-item expanded affix "><li class="part-title">Call: why</li><li class="chapter-item expanded "><a href="call/0000-use-markdown-decision-records.html"><strong aria-hidden="true">4.</strong> Use Markdown decision records (MADR)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="call/0001-adopt-host-methodology.html"><strong aria-hidden="true">4.1.</strong> Adopt the host methodology and embed cathach as the Where room</a></li><li class="chapter-item expanded "><a href="call/0002-multi-modal-encoding.html"><strong aria-hidden="true">4.2.</strong> Multi-modal encoding: digit, ASCII, and QR tiers</a></li><li class="chapter-item expanded "><a href="call/0003-readable-text-front.html"><strong aria-hidden="true">4.3.</strong> Readable text as the front modality; the exact-byte tiers behind</a></li><li class="chapter-item expanded "><a href="call/0004-dense-machine-tier.html"><strong aria-hidden="true">4.4.</strong> The dense machine tier: 64 KiB per page, cathach-native</a></li><li class="chapter-item expanded "><a href="call/0005-document-architecture.html"><strong aria-hidden="true">4.5.</strong> Document architecture: page types, the human-backed-by-machine ensemble, the stream substrate</a></li><li class="chapter-item expanded "><a href="call/0006-typesetting-and-fonts.html"><strong aria-hidden="true">4.6.</strong> Typesetting and fonts: vendored open faces, CJK variant selection, Typst</a></li><li class="chapter-item expanded "><a href="call/0007-preamble-languages.html"><strong aria-hidden="true">4.7.</strong> Trilingual preamble: English, Mandarin, Spanish</a></li><li class="chapter-item expanded "><a href="call/0008-assumed-knowledge-floor.html"><strong aria-hidden="true">4.8.</strong> The assumed-knowledge floor: tally strokes</a></li><li class="chapter-item expanded "><a href="call/0009-payload-symbols-and-guards.html"><strong aria-hidden="true">4.9.</strong> Payload symbols and the hand-computable guards</a></li><li class="chapter-item expanded "><a href="call/0010-redundancy-and-erasure-decoding.html"><strong aria-hidden="true">4.10.</strong> Redundancy and erasure-mode decoding</a></li><li class="chapter-item expanded "><a href="call/0011-two-tier-registration.html"><strong aria-hidden="true">4.11.</strong> Two-tier distributed registration</a></li><li class="chapter-item expanded "><a href="call/0012-integrity-digests.html"><strong aria-hidden="true">4.12.</strong> Integrity digests, one per tier</a></li><li class="chapter-item expanded "><a href="call/0013-preamble-pedagogy-and-floor.html"><strong aria-hidden="true">4.13.</strong> Preamble pedagogy and the floor reconciliation</a></li><li class="chapter-item expanded "><a href="call/0014-print-resolution.html"><strong aria-hidden="true">4.14.</strong> Print resolution</a></li><li class="chapter-item expanded "><a href="call/0015-longevity-and-positioning.html"><strong aria-hidden="true">4.15.</strong> Longevity and honest positioning</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Reference: how</li><li class="chapter-item expanded "><a href="CLAUDE.html"><strong aria-hidden="true">5.</strong> CLAUDE.md: operating manual for an agentic project</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="STRUCTURE.html"><strong aria-hidden="true">5.1.</strong> Structure</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Memory</li><li class="chapter-item expanded "><a href="MEMORY.html" class="active"><strong aria-hidden="true">6.</strong> Memory</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">agentic-cathach</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="memory"><a class="header" href="#memory">MEMORY</a></h1>
+<p>Append-only working memory. Newest entries at the bottom. Never rewrite or delete an
+old entry; if one was wrong, add a new one that corrects it and points back. This
+file is excluded from the naming and prose audits (<code>.host-lintignore</code>).</p>
+<h2 id="2026-07-04--adopted-the-host-methodology-case-a"><a class="header" href="#2026-07-04--adopted-the-host-methodology-case-a">2026-07-04 — Adopted the host methodology (case a)</a></h2>
+<ul>
+<li><code>agentic-cathach</code> is the host for the software <code>cathach</code>
+(<code>github.com/slartibardfast/cathach</code>). Both repos started empty.</li>
+<li>Adopted template <code>github.com/connollydavid/host-template</code> at revision
+<code>565410a860abab47b4782342374a1b9b2f08ddcb</code>. Recorded in <code>.host</code>. The stamp's
+<code>adopted</code> date reads <code>2026-07-03</code> because <code>host-lifecycle adopt</code> took it from the
+build host's clock; the actual adoption day is 2026-07-04. The stamp is never
+hand-edited, so it stands as written.</li>
+<li>Case (a): copied <code>CLAUDE.md</code> + <code>STRUCTURE.md</code> verbatim, scaffolded <code>cast/ plan/ call/</code>, added a project-specifics heading to <code>CLAUDE.md</code>. See <code>call/0001</code>.</li>
+<li>Project conventions (from the operator): all software is cross-platform Rust;
+development is specification-driven; a data-gathering phase precedes the Rust
+pipeline.</li>
+<li>Imported the cathach design note into <code>plan/0001-durable-book-format/</code>. It is a
+durable printed-book data encoding; the near-term work is measuring the
+print-and-damage channel to fix the error-correction parameters and glyph alphabet
+before any code. The measured milestone tasks carry <code>attested operator</code> verifies.</li>
+<li><code>.host-lint-allow</code> declares the measurements <code>2.8 mm</code> / <code>0.34 mm</code> as quantities,
+not milestone codes, so the naming audit stays clean.</li>
+</ul>
+<h3 id="tooling"><a class="header" href="#tooling">Tooling</a></h3>
+<ul>
+<li>Built <code>host-lint</code> (pinned <code>2ef53995855e4ec363ba5b587b176d49b9aad7a5</code>) and
+<code>host-lifecycle</code> (pinned <code>2a24deb0e5bcb3b3c09f50c39d7cfb84c445eafa</code>) from source
+under Rust 1.96.1 (the template's reproducible anchor is 1.95.0; the minor bump
+builds cleanly). The build tree lives in the session scratchpad, not in the repo.</li>
+<li>The <code>cathach</code> software pin is <code>617cb57630b06247d551a68562643f6fd54ca389</code> (its
+<code>main</code> HEAD), to record in <code>.host-software</code>.</li>
+</ul>
+<h3 id="pending-operator-approval-auto-mode-trust-gates"><a class="header" href="#pending-operator-approval-auto-mode-trust-gates">Pending operator approval (auto-mode trust gates)</a></h3>
+<p>These steps cross trust boundaries the harness would not auto-approve, so they are
+not done yet:</p>
+<ul>
+<li>Wire the tool submodules (<code>host-template</code>, <code>tools/host-lint</code>,
+<code>tools/host-lifecycle</code>, <code>tools/allium</code>, <code>tools/specula</code>) at their pinned commits,
+then generate skills with <code>link-skills.sh</code>. <code>allium</code>/<code>specula</code> are inert until a
+spec exists and may be deferred.</li>
+<li>Write <code>.host-software</code> for <code>cathach</code> and run <code>host-lifecycle software --materialize .</code> to realise <code>software/cathach/</code>.</li>
+<li>Install the commit hooks (<code>pre-commit</code>, <code>commit-msg</code>, and the <code>host-lint</code> binary
+into <code>.git/hooks</code>).</li>
+</ul>
+<p>Pinned commits for when these run: host-lint <code>2ef5399</code>, host-lifecycle <code>2a24deb</code>,
+allium <code>82da292</code>, specula <code>38e9d6e</code>, host-template <code>565410a</code>.</p>
+<h2 id="2026-07-04--completed-the-external-wiring-corrected-the-tool-pins"><a class="header" href="#2026-07-04--completed-the-external-wiring-corrected-the-tool-pins">2026-07-04 — Completed the external wiring; corrected the tool pins</a></h2>
+<p>The operator approved the external steps, so all of the pending items above are now
+done. Two corrections to the entry above:</p>
+<ul>
+<li>Tool pins. The template pins <code>tools/host-lint</code> at v0.2.0 and <code>tools/host-lifecycle</code>
+at v0.15.1, but its own <code>UPGRADING.md</code> baseline requires host-lifecycle v0.32.0
+(ledger rule <code>a22704e</code>: pin at or above the ledger's maximum <code>requires</code>). The v0.15.1
+binary has no <code>receipt</code> command, so <code>software --check</code> HAZARDed the receipts entry
+<code>ac32d1c</code>. Rebuilt and re-pinned <code>tools/host-lifecycle</code> to v0.35.1 (<code>486add7</code>) and
+<code>tools/host-lint</code> to v0.12.1 (<code>78804cd</code>). See <code>call/0001</code>.</li>
+<li>Where-room layout. The v0.35.1 <code>.host-software</code> <code>worktrees</code> key takes branch names,
+not paths, and the canonical worktree comes from <code>branch</code> (default <code>main</code>). The
+recipe now records <code>branch = main</code> with no redundant <code>worktrees</code> line, materialized
+as <code>software/cathach/.git</code> (bare) plus <code>software/cathach/main</code>.</li>
+</ul>
+<p>Recorded a receipt for all eight lifecycle phases: classify/adopt/embed/upgrade/verify
+done, remap/publish/release skip with reasons. <code>host-lifecycle software --check</code> is
+green (components at pin, upgrade ledger clean, prose clean, reconcile clean, every
+phase receipted). The commit-hook tell test blocks a <code>Phase 1</code> message.</p>
+<p>Still open (deliberately deferred, not blocking the gate): the doc-site CI lane
+(<code>.github/workflows/mdbook.yml</code>, so <code>publish</code> can move from skip to done) and cathach's
+reproducible-build recipe and specs, which wait on the software gaining code.</p>
+<h2 id="2026-07-05--prior-art-grounding-the-base-six-problem-and-a-format-proposal"><a class="header" href="#2026-07-05--prior-art-grounding-the-base-six-problem-and-a-format-proposal">2026-07-05 — Prior-art grounding, the base-six problem, and a format proposal</a></h2>
+<ul>
+<li>Added a sixth cast persona, Nuala the comparative linguist of number
+(<code>cast/nuala-numeral-linguist.md</code>, commit <code>5312b65</code>): a design advisor for the
+trilingual preamble's cross-linguistic soundness, not a decode-tier reader.</li>
+<li>Ran a five-thread prior-art survey (<code>plan/0001-durable-book-format/prior-art.md</code>,
+commit <code>dac734b</code>). Two load-bearing findings:
+<ul>
+<li>The hand-tier check pair (S = sum mod b, W = position-weighted sum mod b) is the
+RAID-6 dual-parity Reed-Solomon construction, a real distance-three code only over a
+field, i.e. a PRIME base. Base six is composite: the weighted guard silently loses
+jump-transposition detection, two-erasure recovery, and single-error correction, and
+a group caps at five data columns. Base seven (prime) restores all of it and allows
+six columns; base five is prime but caps at four. So base six was never settled and
+is a weak choice. Recommend base seven; if the alphabet measurement forces six,
+scope the guarantee to what the plain sum secures, or use a Verhoeff/Damm digit
+(loses hand-computability).</li>
+<li>The preamble uses multiplication in W, but the assumed-knowledge floor (<code>call/0008</code>)
+is only counting, and no draft teaches multiplication. Fix: teach it as arrays before
+the guard. Alternative surfaced and verified: a Fletcher-style double running sum
+(A += digit; B += A) gives a transposition-catching weighted check with ADDITION ONLY
+over a prime base (weights are the reversed set, equal strength), so multiplication
+could be avoided entirely. Open fork.</li>
+</ul>
+</li>
+<li>Advisor review (Fable 5) judged the milestone "inverted": effort is on the downstream
+preamble while the critical-path root, a measurement-protocol document with a decision
+table (measured rate -&gt; radix/group/guards/interleave), does not exist and blocks three
+of four tasks. Honest-record defects it flagged: <code>poc-findings.md</code> mislabels a software
+simulation as <code>#measure-channel</code> results; print resolution contradicts (README locks
+300 DPI, <code>call/0004</code>/<code>architecture.md</code> say 600 dpi / 0.22 mm module).</li>
+<li>Drafted a format decisions-and-sequence proposal (<code>format-proposal.md</code>, status
+proposed, under operator review; browser render served at the poc gallery
+<code>localhost:8010/format-proposal.html</code>). It locks the decidable-now items and marks the
+measurement-gated ones, and names the decisions to record as <code>call/</code> entries once
+accepted: prime radix + guards; redundancy and erasure-mode decode; padding and the
+zero glyph; the integrity digests; preamble pedagogy plus a <code>call/0008</code> amendment
+(floor stays counting, arithmetic is taught not assumed); longevity and novelty
+positioning; finder reuse amending <code>call/0004</code>; and the DPI resolution.</li>
+</ul>
+<h2 id="2026-07-05--operator-rulings-and-the-hand-approved-alphabet"><a class="header" href="#2026-07-05--operator-rulings-and-the-hand-approved-alphabet">2026-07-05 — Operator rulings and the hand-approved alphabet</a></h2>
+<ul>
+<li>The operator ruled all six open questions in the format proposal: base 7; teach
+multiplication as arrays; a DISTINCT pad glyph (so the alphabet is eight glyphs, digits
+plus pad); two-tier distributed registration for finders (amends <code>call/0004</code>); lock
+600 dpi; digests per file and per book. Folded into <code>format-proposal.md</code> (commit
+<code>09ba43f</code>).</li>
+<li>Added a glyph HAND-APPROVAL gate: the eight glyph shapes need a human sign-off before
+adoption; measurement narrows candidates but does not decide.</li>
+<li>The operator then exercised that gate and HAND-APPROVED the alphabet: Hindu-Arabic
+digits 0 to 6 for the values, and a SALTIRE (diagonal cross) for the distinct pad. The
+payload and the preamble now share the digit alphabet. Measurement's remaining role is
+to VALIDATE the chosen shapes (watch the digit zero against six for confusion), not to
+choose them; a failing pair returns to the operator, not a silent change. The pad
+saltire contributes zero to both guards while being visually a non-digit.</li>
+<li>Served review artifacts (gitignored, in the poc gallery): the proposal rendered at
+<code>localhost:8010/format-proposal.html</code>, and an alphabet preview at
+<code>localhost:8010/alphabet-preview.html</code> (built via a small scratchpad md-to-html script,
+since no pandoc or python-markdown is installed). NOTE: those ad-hoc renders were removed
+in the refactor below; the doc site is now the generated mdBook.</li>
+</ul>
+<h2 id="2026-07-05--refactor-to-the-methodologys-mdbook-doc-site-framing"><a class="header" href="#2026-07-05--refactor-to-the-methodologys-mdbook-doc-site-framing">2026-07-05 — Refactor to the methodology's mdBook doc-site framing</a></h2>
+<ul>
+<li>Correction to the entry above: reviewing host docs by hand-rolling HTML (a scratch
+md-to-html script plus a python http server) and dropping host <code>plan/</code> renders into the
+SOFTWARE poc output dir violated the spine. STRUCTURE.md names <code>host-lifecycle book .</code> the
+canonical publisher (do not hand-roll a generator), and the rooms stay separate. Removed the
+host-doc HTML from <code>software/cathach/main/poc/out</code>.</li>
+<li>The doc site is the generated mdBook: <code>host-lifecycle book .</code> writes <code>book.toml</code> +
+<code>mdBook/src</code> + <code>SUMMARY.md</code> (all gitignored), <code>mdbook build</code> renders <code>mdBook/out</code>, and
+<code>mdbook serve</code> on :8010 is the review surface. The book surfaces one page per milestone (its
+README) plus cast, call, reference, memory. Supporting milestone docs (prior-art,
+measurement-protocol, format-proposal, architecture, preamble drafts) are linked from the
+milestone README, not separate book pages.</li>
+<li>Reconciled <code>plan/0001</code> drift: the README "Open items" restated the floor, radix, alphabet,
+and third language as open when call/0008 through call/0015 had decided them; replaced with a
+governing-decisions summary pointing to those decisions and naming what stays genuinely gated
+on measurement. Updated build-sequence task prose to cite the decisions and the measurement
+protocol (anchors and verify/depends fields unchanged). Relabelled <code>poc-findings.md</code> honestly
+as a simulation, not physical <code>#measure-channel</code> results. Marked <code>format-proposal.md</code> accepted,
+a frozen record whose decisions now live in call/0009 through call/0015.</li>
+<li>Gate stays green: <code>software --check</code> exit 0 (no HAZARDs, task graph intact), <code>book --check</code>
+ok, prose and reconcile clean. <code>publish</code> remains a valid skip (no Site CI workflow or Pages
+deployment yet); that is the one remaining step to publish done, and it is an outward-facing
+choice for the operator.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="STRUCTURE.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="STRUCTURE.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Durable book format for cathach - agentic-cathach</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">agentic-cathach</a></li><li class="chapter-item expanded affix "><li class="part-title">Cast: who</li><li class="chapter-item expanded "><a href="../../cast/index.html"><strong aria-hidden="true">1.</strong> Cast: the project's Who</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../cast/aoife-casual-reader.html"><strong aria-hidden="true">1.1.</strong> Aoife: the Casual Reader</a></li><li class="chapter-item expanded "><a href="../../cast/applying-personas.html"><strong aria-hidden="true">1.2.</strong> Applying personas during planning</a></li><li class="chapter-item expanded "><a href="../../cast/brid-archivist.html"><strong aria-hidden="true">1.3.</strong> Bríd: the Archivist-Preservationist</a></li><li class="chapter-item expanded "><a href="../../cast/cormac-encoding-engineer.html"><strong aria-hidden="true">1.4.</strong> Cormac: the Encoding Engineer</a></li><li class="chapter-item expanded "><a href="../../cast/fintan-tool-rebuilder.html"><strong aria-hidden="true">1.5.</strong> Fintan: the Tool-Rebuilder</a></li><li class="chapter-item expanded "><a href="../../cast/nuala-numeral-linguist.html"><strong aria-hidden="true">1.6.</strong> Nuala: the Comparative Linguist of Number</a></li><li class="chapter-item expanded "><a href="../../cast/oisin-hand-decoder.html"><strong aria-hidden="true">1.7.</strong> Oisín: the Far-Future Hand-Decoder</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Plan: what & when</li><li class="chapter-item expanded "><a href="../../plan-index.html"><strong aria-hidden="true">2.</strong> Plan</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../plan/0001-durable-book-format/index.html" class="active"><strong aria-hidden="true">2.1.</strong> Durable book format for cathach</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Software: where</li><li class="chapter-item expanded "><a href="../../where.html"><strong aria-hidden="true">3.</strong> Software</a></li><li class="chapter-item expanded affix "><li class="part-title">Call: why</li><li class="chapter-item expanded "><a href="../../call/0000-use-markdown-decision-records.html"><strong aria-hidden="true">4.</strong> Use Markdown decision records (MADR)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../call/0001-adopt-host-methodology.html"><strong aria-hidden="true">4.1.</strong> Adopt the host methodology and embed cathach as the Where room</a></li><li class="chapter-item expanded "><a href="../../call/0002-multi-modal-encoding.html"><strong aria-hidden="true">4.2.</strong> Multi-modal encoding: digit, ASCII, and QR tiers</a></li><li class="chapter-item expanded "><a href="../../call/0003-readable-text-front.html"><strong aria-hidden="true">4.3.</strong> Readable text as the front modality; the exact-byte tiers behind</a></li><li class="chapter-item expanded "><a href="../../call/0004-dense-machine-tier.html"><strong aria-hidden="true">4.4.</strong> The dense machine tier: 64 KiB per page, cathach-native</a></li><li class="chapter-item expanded "><a href="../../call/0005-document-architecture.html"><strong aria-hidden="true">4.5.</strong> Document architecture: page types, the human-backed-by-machine ensemble, the stream substrate</a></li><li class="chapter-item expanded "><a href="../../call/0006-typesetting-and-fonts.html"><strong aria-hidden="true">4.6.</strong> Typesetting and fonts: vendored open faces, CJK variant selection, Typst</a></li><li class="chapter-item expanded "><a href="../../call/0007-preamble-languages.html"><strong aria-hidden="true">4.7.</strong> Trilingual preamble: English, Mandarin, Spanish</a></li><li class="chapter-item expanded "><a href="../../call/0008-assumed-knowledge-floor.html"><strong aria-hidden="true">4.8.</strong> The assumed-knowledge floor: tally strokes</a></li><li class="chapter-item expanded "><a href="../../call/0009-payload-symbols-and-guards.html"><strong aria-hidden="true">4.9.</strong> Payload symbols and the hand-computable guards</a></li><li class="chapter-item expanded "><a href="../../call/0010-redundancy-and-erasure-decoding.html"><strong aria-hidden="true">4.10.</strong> Redundancy and erasure-mode decoding</a></li><li class="chapter-item expanded "><a href="../../call/0011-two-tier-registration.html"><strong aria-hidden="true">4.11.</strong> Two-tier distributed registration</a></li><li class="chapter-item expanded "><a href="../../call/0012-integrity-digests.html"><strong aria-hidden="true">4.12.</strong> Integrity digests, one per tier</a></li><li class="chapter-item expanded "><a href="../../call/0013-preamble-pedagogy-and-floor.html"><strong aria-hidden="true">4.13.</strong> Preamble pedagogy and the floor reconciliation</a></li><li class="chapter-item expanded "><a href="../../call/0014-print-resolution.html"><strong aria-hidden="true">4.14.</strong> Print resolution</a></li><li class="chapter-item expanded "><a href="../../call/0015-longevity-and-positioning.html"><strong aria-hidden="true">4.15.</strong> Longevity and honest positioning</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Reference: how</li><li class="chapter-item expanded "><a href="../../CLAUDE.html"><strong aria-hidden="true">5.</strong> CLAUDE.md: operating manual for an agentic project</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../STRUCTURE.html"><strong aria-hidden="true">5.1.</strong> Structure</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Memory</li><li class="chapter-item expanded "><a href="../../MEMORY.html"><strong aria-hidden="true">6.</strong> Memory</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">agentic-cathach</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="durable-book-format-for-cathach"><a class="header" href="#durable-book-format-for-cathach">Durable book format for cathach</a></h1>
+<ul>
+<li>Status: proposed</li>
+<li>Scope: cathach</li>
+<li>Persona: <a href="../../cast/brid-archivist.html">Bríd</a>, the archivist-preservationist,
+is the primary persona this milestone serves; the full cast is in <code>cast/</code>.</li>
+</ul>
+<h2 id="goal"><a class="header" href="#goal">Goal</a></h2>
+<p>Settle, by measurement, the parameters the printed-book encoding cannot fix by
+assumption, then scope the cross-platform Rust pipeline that implements the settled
+format. The near-term work is data gathering: the error-correction split, the
+erasure depth per group and per page, and the glyph alphabet all come from running
+the protocol on real paper, toner, and printers. This milestone imports the format
+design below and sequences that measurement work ahead of any code.</p>
+<p>The design is imported from a research note (<code>cathach-design.md</code>, 2026-07). It is
+reproduced here as the milestone's design context; the open items it lists become
+the build sequence at the end.</p>
+<h2 id="design-a-durable-printed-book-encoding"><a class="header" href="#design-a-durable-printed-book-encoding">Design: a durable printed-book encoding</a></h2>
+<p>Cathach encodes an arbitrary file tree as a printed book that decodes back to exact
+bytes. The book is normally machine-scanned, but any region stays recoverable by a
+human with pen and paper once the printed preamble is read. The print target is
+PDF/A-3 on a common black-and-white laser printer at 300 DPI, read by unaided eye
+with no lens.</p>
+<p><em>Cathach, "the Battler", is the oldest surviving Irish manuscript, a sixth-century
+Vulgate psalter traditionally attributed to Colum Cille and carried by the Ó
+Domhnaill as a protective relic. The name fits a book format built to outlast the
+machines that read it. (The etymology is worth a second check before it reaches
+print.)</em></p>
+<h3 id="decoding-tiers"><a class="header" href="#decoding-tiers">Decoding tiers</a></h3>
+<p>The format decodes at three tiers of falling capability and rising durability.
+Correctness lives in the specification. The tools are a re-derivable expression of
+it, and the decoder's own C and Forth source ships inside the payload tree and again
+as a PDF/A-3 attachment, so a reader can rebuild the tool tier from the human tier.</p>
+<div class="table-wrapper"><table><thead><tr><th>Tier</th><th>Reader</th><th>Role</th></tr></thead><tbody>
+<tr><td>Scanner</td><td>Flatbed or camera scanner plus software</td><td>Fast bulk decode with full Reed-Solomon correction</td></tr>
+<tr><td>Rebuilt tool</td><td>C or Forth tool rebuilt from the printed source</td><td>Reconstruction when the scanner tier is gone</td></tr>
+<tr><td>Hand</td><td>Human, pen and paper, using the preamble</td><td>Last-resort recovery, expected in practice to recover only the rebuilt-tool bootstrap</td></tr>
+</tbody></table>
+</div>
+<p>Whole-tree-by-hand stays a guarantee that is never expected to be exercised.</p>
+<h3 id="locked-constraints"><a class="header" href="#locked-constraints">Locked constraints</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Area</th><th>Decision</th></tr></thead><tbody>
+<tr><td>Decode direction</td><td>Decode-only for humans. Machine tooling is bidirectional: it encodes and scans back. The scan-back path may be lost, so the spec is authoritative.</td></tr>
+<tr><td>Human maths budget</td><td>Addition and multiplication, taught in one-third of a page per language</td></tr>
+<tr><td>Preamble languages</td><td>Three, selected by literate-speaker population</td></tr>
+<tr><td>Correction</td><td>Preferred, with roughly one-third of each page given to redundancy</td></tr>
+<tr><td>Longevity</td><td>The practical limit of high-quality paper and fused laser toner</td></tr>
+<tr><td>Page loss</td><td>A lost page is recoverable from the rest. Every page is assumed to survive partially with limited local damage.</td></tr>
+<tr><td>Redundancy scope</td><td>Within-book</td></tr>
+<tr><td>Byte fidelity</td><td>Exact, with explicit per-file length and a defined padding convention</td></tr>
+<tr><td>Document integrity</td><td>SHA-256 for the machine tier, plus a hand-checkable digest for the human tier</td></tr>
+<tr><td>Visual registers</td><td>Two: a plain instructional register, and a dense payload register</td></tr>
+<tr><td>Print target</td><td>PDF/A-3, black-and-white laser, 300 DPI, no lens</td></tr>
+<tr><td>Container</td><td>A file tree with an embedded manifest holding paths, per-file lengths, and per-file hashes</td></tr>
+</tbody></table>
+</div>
+<h3 id="redundancy-model"><a class="header" href="#redundancy-model">Redundancy model</a></h3>
+<p>Within-book. Physical damage to fused toner is spatially contiguous: cracking,
+flaking, and liquid rings take out regions rather than scattered independent dots.
+Such damage presents as an erasure with a known location rather than a silent error,
+and an erasure is far cheaper to correct. The machine tier uses Reed-Solomon erasure
+coding at roughly one-third overhead, which the measurement below is expected to
+confirm beats plain repetition for this failure shape.</p>
+<p>The human tier is capped at one erasure per group, recoverable by subtraction alone
+and so inside the addition-and-multiplication budget. It is worked below, with each
+symbol a single digit in the payload base (base 10 shown for legibility) and both
+checks kept in that base so no division is ever needed:</p>
+<pre><code>positions          1   2   3   4   5
+data               3   7   1   9   4
+
+plain check   S  = (3+7+1+9+4) mod 10           = 4     # fills a located erasure
+weighted chk  W  = (1·3+2·7+3·1+4·9+5·4) mod 10 = 6     # detects a silent substitution
+
+-- damage erases position 3, value unknown, location known --
+positions          1   2   3   4   5
+data               3   7   ?   9   4
+
+known sum        = (3+7+9+4) mod 10   = 3
+recovered v3     = (S - known) mod 10 = (4 - 3) mod 10 = 1     # exact, subtraction only
+</code></pre>
+<p>Two erasures at once, or a blind error with no known location, require dividing by a
+position difference. That needs a modular inverse, which is outside the human budget,
+so those cases belong to the scanner and rebuilt-tool tiers. The same subtraction
+logic recovers one fully lost page from a cross-page parity page, one lost page per
+parity group.</p>
+<h3 id="integrity-layered"><a class="header" href="#integrity-layered">Integrity, layered</a></h3>
+<p>Per group, two linear checks in the payload base. The plain sum fills a located
+erasure using subtraction. The position-weighted sum detects a silent substitution
+using multiplication and addition. Neither uses division, so both stay teachable
+within the preamble budget.</p>
+<p>Per document, SHA-256 for the machine tier, printed as glyphs and embedded as an
+attachment. A hand-checkable running-sum digest covers the human tier, since no
+human computes SHA-256 on paper.</p>
+<h3 id="symbol-alphabet"><a class="header" href="#symbol-alphabet">Symbol alphabet</a></h3>
+<p>Small radix, four to eight. Two forces push it low: the cost of teaching the alphabet
+trilingually, and the visual distance needed between glyphs so that damage lands a
+glyph in the cheap erasure regime instead of turning it into a different valid glyph.
+Density pushes it high, and legibility caps it. Naked-eye discrimination floors a
+human glyph near 2.8 mm against roughly 0.34 mm for a 300 DPI machine module, about
+an eight-to-one gap. The two visual registers follow directly: a plain instructional
+register carries the preamble, page headers, and orientation marks, and a dense
+payload register carries the data. The machine and human layers are therefore printed
+as separate representations at their own scales.</p>
+<h3 id="governing-decisions"><a class="header" href="#governing-decisions">Governing decisions</a></h3>
+<p>The design above was imported from a research note, and its open questions have since been
+settled and recorded as decisions, which govern this milestone:</p>
+<ul>
+<li>The assumed-knowledge floor is tally strokes (<a href="../../call/0008-assumed-knowledge-floor.html">call/0008</a>),
+with the budget's arithmetic taught from that floor, not assumed
+(<a href="../../call/0013-preamble-pedagogy-and-floor.html">call/0013</a>).</li>
+<li>The payload base is seven, with a hand-approved alphabet of the digits 0 to 6 and a saltire
+pad, eight glyphs in all (<a href="../../call/0009-payload-symbols-and-guards.html">call/0009</a>). The
+glyph shapes are hand-approved, and the measurement validates their visual distance.</li>
+<li>Redundancy is Reed-Solomon decoded in erasure mode
+(<a href="../../call/0010-redundancy-and-erasure-decoding.html">call/0010</a>); registration is two-tier
+(<a href="../../call/0011-two-tier-registration.html">call/0011</a>); the digests are one per tier
+(<a href="../../call/0012-integrity-digests.html">call/0012</a>); the print resolution is 600 dpi
+(<a href="../../call/0014-print-resolution.html">call/0014</a>); the positioning is centuries on ISO 9706
+paper (<a href="../../call/0015-longevity-and-positioning.html">call/0015</a>).</li>
+<li>The third preamble language is Spanish (<a href="../../call/0007-preamble-languages.html">call/0007</a>).</li>
+</ul>
+<p>What stays genuinely gated on the physical measurement: the split between repetition and
+Reed-Solomon, the erasure depth per group and per page, the interleave depth and guard count
+from the worst-case burst width, and the visual-distance validation of the eight-glyph
+alphabet. The protocol that fixes them is <a href="measurement-protocol.html">measurement-protocol.md</a>.
+The prior-art evidence behind the decisions is <a href="prior-art.html">prior-art.md</a>, and the accepted
+design record they were extracted from is <a href="format-proposal.html">format-proposal.md</a>.</p>
+<h2 id="build-sequence"><a class="header" href="#build-sequence">Build sequence</a></h2>
+<h3 id="measure-channel"><a class="header" href="#measure-channel">Measure the print-and-damage channel</a></h3>
+<ul>
+<li>verify: attested operator</li>
+<li>inputs: plan/0001-durable-book-format/README.md</li>
+</ul>
+<p>Run the protocol in <a href="measurement-protocol.html">measurement-protocol.md</a> on the target
+paper, toner, and printer to fix the erasure statistics, the silent-substitution rate, and
+the error-correction parameters (the repetition and Reed-Solomon split, the erasure depth
+per group and per page), and to validate the eight-glyph alphabet. This is the data-gathering
+the rest of the milestone waits on. The simulation and the go/no-go gates are in
+<a href="poc-findings.html">poc-findings.md</a>; the working format design is in
+<a href="architecture.html">architecture.md</a>.</p>
+<h3 id="design-alphabet"><a class="header" href="#design-alphabet">Design the glyph alphabet against the measurements</a></h3>
+<ul>
+<li>depends: #measure-channel</li>
+<li>verify: attested operator</li>
+</ul>
+<p>The radix and the alphabet are decided (<a href="../../call/0009-payload-symbols-and-guards.html">call/0009</a>):
+base seven, digits 0 to 6 and a saltire pad, hand-approved. This task validates that
+hand-approved alphabet against the measured silent-substitution rate, and takes the recorded
+fallback if the eight glyphs cannot be separated at the required visual distance.</p>
+<h3 id="draft-preamble"><a class="header" href="#draft-preamble">Resolve the assumed-knowledge floor and draft the preamble</a></h3>
+<ul>
+<li>depends: #measure-channel</li>
+<li>verify: attested operator</li>
+</ul>
+<p>The floor is settled at tally strokes (<a href="../../call/0008-assumed-knowledge-floor.html">call/0008</a>).
+Draft the trilingual preamble by the pedagogy in
+<a href="../../call/0013-preamble-pedagogy-and-floor.html">call/0013</a>, which teaches the budget's
+arithmetic from that floor. English and Mandarin are joined by Spanish as the third language
+(<a href="../../call/0007-preamble-languages.html">call/0007</a>). Two working drafts are under way, in
+<a href="preamble-draft.html">preamble-draft.md</a> and <a href="preamble-proposal-nuala.html">preamble-proposal-nuala.md</a>.</p>
+<h3 id="scope-rust-pipeline"><a class="header" href="#scope-rust-pipeline">Scope the cross-platform Rust pipeline</a></h3>
+<ul>
+<li>depends: #design-alphabet, #draft-preamble</li>
+<li>verify: attested operator</li>
+</ul>
+<p>Scope the cross-platform Rust software: a static folder-to-PDF/A-3 encoder, and a
+bidirectional FUSE wrapper for Linux and macOS. Author the <code>.allium</code> behaviour spec
+(and any <code>.tla</code> timing spec) before the code, per the project's specification-driven
+discipline, and record the build in <code>.host-software</code> as per-platform builds.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../plan-index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../where.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../plan-index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../where.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
