@@ -1,6 +1,7 @@
 # The assumed-knowledge floor: tally strokes
 
 - Status: accepted
+- Amended: call/0013 records that the budget's arithmetic (addition and multiplication) is taught from this floor, never assumed.
 - Scope: cathach
 - Date: 2026-07-04
 
