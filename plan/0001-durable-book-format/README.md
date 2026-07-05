@@ -122,26 +122,31 @@ register carries the preamble, page headers, and orientation marks, and a dense
 payload register carries the data. The machine and human layers are therefore printed
 as separate representations at their own scales.
 
-### Open items
+### Governing decisions
 
-The assumed-knowledge floor is unresolved. Everything the preamble can define depends
-on what a far-future reader is presumed to already know, and that presumption is not
-yet fixed. Two candidate floors are in play: a minimal one, that marks carry meaning
-and that a reader can count; and a higher one that also assumes positional numerals.
-This is the deepest gap and it gates the preamble draft.
+The design above was imported from a research note, and its open questions have since been
+settled and recorded as decisions, which govern this milestone:
 
-The error-correction parameters are fixed by measurement, not by assumption. The
-final split between repetition and Reed-Solomon, and the target erasure depth per
-group and per page, come from running the protocol on the actual paper, toner, and
-printer.
+- The assumed-knowledge floor is tally strokes ([call/0008](../../call/0008-assumed-knowledge-floor.md)),
+  with the budget's arithmetic taught from that floor, not assumed
+  ([call/0013](../../call/0013-preamble-pedagogy-and-floor.md)).
+- The payload base is seven, with a hand-approved alphabet of the digits 0 to 6 and a saltire
+  pad, eight glyphs in all ([call/0009](../../call/0009-payload-symbols-and-guards.md)). The
+  glyph shapes are hand-approved, and the measurement validates their visual distance.
+- Redundancy is Reed-Solomon decoded in erasure mode
+  ([call/0010](../../call/0010-redundancy-and-erasure-decoding.md)); registration is two-tier
+  ([call/0011](../../call/0011-two-tier-registration.md)); the digests are one per tier
+  ([call/0012](../../call/0012-integrity-digests.md)); the print resolution is 600 dpi
+  ([call/0014](../../call/0014-print-resolution.md)); the positioning is centuries on ISO 9706
+  paper ([call/0015](../../call/0015-longevity-and-positioning.md)).
+- The third preamble language is Spanish ([call/0007](../../call/0007-preamble-languages.md)).
 
-The glyph alphabet is undesigned. The exact radix within four to eight, and the glyph
-shapes that maximise minimum visual distance, are drawn against the measured
-silent-substitution rate, since the two are coupled.
-
-The third preamble language is open. English and Mandarin are settled by
-literate-speaker population; the third is Hindi or Spanish pending a current figure.
-Font embedding for PDF/A-3 needs Latin, Han, and then Devanagari or extended Latin.
+What stays genuinely gated on the physical measurement: the split between repetition and
+Reed-Solomon, the erasure depth per group and per page, the interleave depth and guard count
+from the worst-case burst width, and the visual-distance validation of the eight-glyph
+alphabet. The protocol that fixes them is [measurement-protocol.md](measurement-protocol.md).
+The prior-art evidence behind the decisions is [prior-art.md](prior-art.md), and the accepted
+design record they were extracted from is [format-proposal.md](format-proposal.md).
 
 ## Build sequence
 
@@ -150,30 +155,35 @@ Font embedding for PDF/A-3 needs Latin, Han, and then Devanagari or extended Lat
 - verify: attested operator
 - inputs: plan/0001-durable-book-format/README.md
 
-Run the measurement protocol on the target paper, toner, and printer to fix the
-erasure statistics, the silent-substitution rate, and the error-correction
-parameters (the repetition and Reed-Solomon split, the erasure depth per group and
-per page). This is the data-gathering the rest of the milestone waits on. Progress
-and the current go/no-go gates are in [poc-findings.md](poc-findings.md); the working
-format design is in [architecture.md](architecture.md).
+Run the protocol in [measurement-protocol.md](measurement-protocol.md) on the target
+paper, toner, and printer to fix the erasure statistics, the silent-substitution rate, and
+the error-correction parameters (the repetition and Reed-Solomon split, the erasure depth
+per group and per page), and to validate the eight-glyph alphabet. This is the data-gathering
+the rest of the milestone waits on. The simulation and the go/no-go gates are in
+[poc-findings.md](poc-findings.md); the working format design is in
+[architecture.md](architecture.md).
 
 ### Design the glyph alphabet against the measurements {#design-alphabet}
 
 - depends: #measure-channel
 - verify: attested operator
 
-Draw the glyph shapes and fix the radix within four to eight to maximise minimum
-visual distance against the measured silent-substitution rate.
+The radix and the alphabet are decided ([call/0009](../../call/0009-payload-symbols-and-guards.md)):
+base seven, digits 0 to 6 and a saltire pad, hand-approved. This task validates that
+hand-approved alphabet against the measured silent-substitution rate, and takes the recorded
+fallback if the eight glyphs cannot be separated at the required visual distance.
 
 ### Resolve the assumed-knowledge floor and draft the preamble {#draft-preamble}
 
 - depends: #measure-channel
 - verify: attested operator
 
-Settle what a far-future reader is presumed to know, then draft the trilingual
-preamble within the addition-and-multiplication budget. English and Mandarin are
-joined by Spanish as the third language (see `call/0007`). A working draft is under
-way in [preamble-draft.md](preamble-draft.md).
+The floor is settled at tally strokes ([call/0008](../../call/0008-assumed-knowledge-floor.md)).
+Draft the trilingual preamble by the pedagogy in
+[call/0013](../../call/0013-preamble-pedagogy-and-floor.md), which teaches the budget's
+arithmetic from that floor. English and Mandarin are joined by Spanish as the third language
+([call/0007](../../call/0007-preamble-languages.md)). Two working drafts are under way, in
+[preamble-draft.md](preamble-draft.md) and [preamble-proposal-nuala.md](preamble-proposal-nuala.md).
 
 ### Scope the cross-platform Rust pipeline {#scope-rust-pipeline}
 

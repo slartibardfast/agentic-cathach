@@ -1,9 +1,15 @@
 # Format proposal: decisions and sequence
 
-- Status: proposed, operator rulings folded in
+- Status: accepted; decisions recorded in call/0009 through call/0015
 - Scope: cathach
 - Date: 2026-07-05
 - Serves: [Bríd](../../cast/brid-archivist.md) (primary), and the wider cast
+
+**This proposal is the accepted design record that produced the milestone's decisions. Those
+decisions are now the immutable record, in [call/0009](../../call/0009-payload-symbols-and-guards.md)
+through [call/0015](../../call/0015-longevity-and-positioning.md), which govern. This document is
+kept as the frozen working record they were extracted from; where the two differ, the decisions
+win.**
 
 ## Purpose and status
 

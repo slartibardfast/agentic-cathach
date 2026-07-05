@@ -5,12 +5,15 @@
 - Date: 2026-07-04
 - Serves: [Bríd](../../cast/brid-archivist.md) (primary), and the wider cast
 
-This is the data-gathering result for the `#measure-channel` and `#design-alphabet`
-tasks. It grounds cathach's parameters in real data and in a working proof-of-concept,
-then stops at the go/no-go gates that need the operator and the cast to decide (and, for
-the physical numbers, a printer). The POC code is exploratory, not the spec-driven
-pipeline; it lives in the cathach worktree at `software/cathach/poc/` and emits plain
-text, so a reviewer reads, prints, and hand-checks it with no rendering step.
+This is a software SIMULATION and proof-of-concept exploring the `#measure-channel` and
+`#design-alphabet` parameters. It is not the physical measurement: the physical protocol is
+[measurement-protocol.md](measurement-protocol.md), and it has not been run, so the numbers
+here are simulated, not measured on real paper, toner, and printer. It grounds cathach's
+parameters in a working proof-of-concept, then stops at the go/no-go gates that need the
+operator and the cast to decide (and, for the physical numbers, the measurement). The POC
+code is exploratory, not the spec-driven pipeline; it lives in the cathach worktree at
+`software/cathach/poc/` and emits plain text, so a reviewer reads, prints, and hand-checks
+it with no rendering step.
 
 ## What the POC does
 
