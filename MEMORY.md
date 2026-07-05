@@ -75,3 +75,40 @@ phase receipted). The commit-hook tell test blocks a `Phase 1` message.
 Still open (deliberately deferred, not blocking the gate): the doc-site CI lane
 (`.github/workflows/mdbook.yml`, so `publish` can move from skip to done) and cathach's
 reproducible-build recipe and specs, which wait on the software gaining code.
+
+## 2026-07-05 — Prior-art grounding, the base-six problem, and a format proposal
+
+- Added a sixth cast persona, Nuala the comparative linguist of number
+  (`cast/nuala-numeral-linguist.md`, commit `5312b65`): a design advisor for the
+  trilingual preamble's cross-linguistic soundness, not a decode-tier reader.
+- Ran a five-thread prior-art survey (`plan/0001-durable-book-format/prior-art.md`,
+  commit `dac734b`). Two load-bearing findings:
+  - The hand-tier check pair (S = sum mod b, W = position-weighted sum mod b) is the
+    RAID-6 dual-parity Reed-Solomon construction, a real distance-three code only over a
+    field, i.e. a PRIME base. Base six is composite: the weighted guard silently loses
+    jump-transposition detection, two-erasure recovery, and single-error correction, and
+    a group caps at five data columns. Base seven (prime) restores all of it and allows
+    six columns; base five is prime but caps at four. So base six was never settled and
+    is a weak choice. Recommend base seven; if the alphabet measurement forces six,
+    scope the guarantee to what the plain sum secures, or use a Verhoeff/Damm digit
+    (loses hand-computability).
+  - The preamble uses multiplication in W, but the assumed-knowledge floor (`call/0008`)
+    is only counting, and no draft teaches multiplication. Fix: teach it as arrays before
+    the guard. Alternative surfaced and verified: a Fletcher-style double running sum
+    (A += digit; B += A) gives a transposition-catching weighted check with ADDITION ONLY
+    over a prime base (weights are the reversed set, equal strength), so multiplication
+    could be avoided entirely. Open fork.
+- Advisor review (Fable 5) judged the milestone "inverted": effort is on the downstream
+  preamble while the critical-path root, a measurement-protocol document with a decision
+  table (measured rate -> radix/group/guards/interleave), does not exist and blocks three
+  of four tasks. Honest-record defects it flagged: `poc-findings.md` mislabels a software
+  simulation as `#measure-channel` results; print resolution contradicts (README locks
+  300 DPI, `call/0004`/`architecture.md` say 600 dpi / 0.22 mm module).
+- Drafted a format decisions-and-sequence proposal (`format-proposal.md`, status
+  proposed, under operator review; browser render served at the poc gallery
+  `localhost:8010/format-proposal.html`). It locks the decidable-now items and marks the
+  measurement-gated ones, and names the decisions to record as `call/` entries once
+  accepted: prime radix + guards; redundancy and erasure-mode decode; padding and the
+  zero glyph; the integrity digests; preamble pedagogy plus a `call/0008` amendment
+  (floor stays counting, arithmetic is taught not assumed); longevity and novelty
+  positioning; finder reuse amending `call/0004`; and the DPI resolution.
