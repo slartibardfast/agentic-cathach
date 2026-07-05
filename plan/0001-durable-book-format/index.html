@@ -190,6 +190,12 @@ design below and sequences that measurement work ahead of any code.</p>
 <p>The design is imported from a research note (<code>cathach-design.md</code>, 2026-07). It is
 reproduced here as the milestone's design context; the open items it lists become
 the build sequence at the end.</p>
+<p>The physical parameters shown in the reproduced note are historical. Where they
+differ from the Governing decisions section below, that section is authoritative:
+the print target is 600 dpi (<a href="../../call/0014-print-resolution.html">call/0014</a>), not
+the 300 DPI the note locks, and the payload base is seven
+(<a href="../../call/0009-payload-symbols-and-guards.html">call/0009</a>), not the small radix the
+note leaves open.</p>
 <h2 id="design-a-durable-printed-book-encoding"><a class="header" href="#design-a-durable-printed-book-encoding">Design: a durable printed-book encoding</a></h2>
 <p>Cathach encodes an arbitrary file tree as a printed book that decodes back to exact
 bytes. The book is normally machine-scanned, but any region stays recoverable by a

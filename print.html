@@ -403,6 +403,12 @@ design below and sequences that measurement work ahead of any code.</p>
 <p>The design is imported from a research note (<code>cathach-design.md</code>, 2026-07). It is
 reproduced here as the milestone's design context; the open items it lists become
 the build sequence at the end.</p>
+<p>The physical parameters shown in the reproduced note are historical. Where they
+differ from the Governing decisions section below, that section is authoritative:
+the print target is 600 dpi (<a href="plan/0001-durable-book-format/../../call/0014-print-resolution.html">call/0014</a>), not
+the 300 DPI the note locks, and the payload base is seven
+(<a href="plan/0001-durable-book-format/../../call/0009-payload-symbols-and-guards.html">call/0009</a>), not the small radix the
+note leaves open.</p>
 <h2 id="design-a-durable-printed-book-encoding"><a class="header" href="#design-a-durable-printed-book-encoding">Design: a durable printed-book encoding</a></h2>
 <p>Cathach encodes an arbitrary file tree as a printed book that decodes back to exact
 bytes. The book is normally machine-scanned, but any region stays recoverable by a
@@ -2121,6 +2127,29 @@ file to <code>mdbook.yml</code>; its content is the template's reference verbati
 <li>Recorded publish done with <code>host-lifecycle receipt --record publish --disposition done</code>;
 <code>software --check</code> is green with the phase done. The receipts ledger is append-only, so the
 earlier skip stays below the new done.</li>
+</ul>
+<h2 id="2026-07-05--reviewed-for-undone-reconciled-drifted-plan-docs"><a class="header" href="#2026-07-05--reviewed-for-undone-reconciled-drifted-plan-docs">2026-07-05 — Reviewed for undone; reconciled drifted plan docs</a></h2>
+<ul>
+<li>GOTCHA (binary provenance): a stray <code>/tmp/opencode/host-build/host-lifecycle</code> is an OLDER
+build that expects the pre-call/0039 layout (a bare repo named <code>.git</code>) and falsely HAZARDs
+<code>MISSING software/cathach/.git</code>. The current layout is call/0039's <code>.bare</code> store + a <code>.git</code>
+gitdir-link file, which the PINNED v0.36.0 tool wants. Always run the session's own built
+binary at <code>scratchpad/bin/host-lifecycle</code> (v0.36.0), not whatever <code>find /tmp</code> turns up. With
+the right binary the gate is exit 0.</li>
+<li>Reviewed for undone. Mechanical gate green, tree clean, nothing unpushed. Found doc-drift:
+live plan docs still asserted pre-decision values, in one case contradicting a decision that
+records itself as applied. call/0014's consequence says the README "is updated to reflect the
+600 dpi lock", but the README still locked 300 DPI in three places (incl. a Locked-constraints
+table). poc-findings' go/no-go gates and both preamble drafts still presented base six as
+current, which format-proposal.md:334 requires to "read as such" (as placeholders).</li>
+<li>Fix (commit <code>03f5c6e</code>): added one superseding note to each of the four docs, pointing at
+call/0009 (base seven + hand-approved eight-glyph alphabet) and call/0014 (600 dpi). Did NOT
+rewrite the imported research note, the simulation's own base-six output, or the draft bodies;
+the base-six worked rows stay as records, marked as placeholders to be revised under the
+pending #draft-preamble task. Gate stays green (prose clean, book renders, software --check
+exit 0).</li>
+<li>Still legitimately pending (not defects): the four milestone tasks (blocked on the operator +
+hardware for #measure-channel), and the inert spec/build lanes (wait on cathach gaining code).</li>
 </ul>
 
                     </main>
