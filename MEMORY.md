@@ -217,4 +217,15 @@ reproducible-build recipe and specs, which wait on the software gaining code.
 - Recorded in the protocol itself, not a new call/ (these refine call/0009/0010/0014; the operator
   can promote them to a decision later if wanted). Updated undone-review.md to match. Gate green.
 - STILL OPEN before #measure-channel runs: the two hardware parameters (ISO 9706 paper stock;
-  printer + monochrome toner), then the operator's approve-before-printing gate (protocol sec 6).
+  printer + monochrome toner), then the operator's approve-before-printing gate (the protocol's
+  gates section).
+- GOTCHA (host-lint allowlist is inert): the pre-commit hook invokes host-lint as
+  `git show ":$file" | host-lint --stdin-as "$file"` with NO allowlist flag, and the binary does
+  not auto-discover `.host-lint-allow` (a declared `2.8 mm` still warns). So `.host-lint-allow` is
+  currently DOCUMENTARY only, not consulted. Measurement decimals (0.17/0.21/2.8 mm, 0.1/99.9
+  percent, etc.) therefore emit advisory `warning:` lines (host-lint rc 3), which the hook prints
+  but does NOT block on (only rc 1 = confirmed tell blocks; rc 0/3 pass). software --check does not
+  run the naming audit, so the gate stays green regardless. Do not cargo-cult entries into the
+  inert allow file. Positional "section N" prose cross-refs DO warn and are a real tell-shape; I
+  reworded mine to directional content ("fixed below", "the decision table above") to match the
+  protocol's own established style ("listed at the end", "the decision table below").
