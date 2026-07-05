@@ -35,38 +35,46 @@ dpi (decision below), which supersedes the README's 300 DPI lock.
 
 | Decision | Choice | Status | Basis |
 |---|---|---|---|
-| Radix | Base 7 (prime) | Decided; glyph feasibility and shapes gated, shapes need hand-approval | prior-art.md, S and W verdict |
+| Radix | Base 7 (prime); alphabet is digits 0 to 6 plus a saltire pad | Decided; shapes hand-approved; distance validation gated | prior-art.md, S and W verdict; operator glyph ruling |
 | Group size | Six data columns per group (base minus one) | Decided | Weight aliasing over the modulus |
 | Redundancy code | Reed-Solomon at roughly one-third overhead | Decided | Peer survey; burst failure model |
 | Decode mode | Erasure mode, driven by an image-derived damage map | Decided | Reed-Solomon distance economics |
 | Layout | CIRC-style interleaving; a group's glyphs never contiguous | Principle decided; depth gated | CIRC; dvdisaster; Optar |
 | Guard scheme | Keep both S and W | Decided | Check-digit record |
 | Guard count | Erasures to recover per group, plus one | Rule decided; count gated | prior-art.md, guard-count logic |
-| Padding and the zero mark | Distinct pad glyph; alphabet is eight glyphs; unpadding is length-based and taught | Decided; eight-glyph feasibility gated | ToC-free end-of-data; Cormac's guard-value point |
+| Padding and the zero mark | Distinct pad glyph, a saltire; alphabet is eight glyphs; unpadding is length-based and taught | Decided; distance validation gated | ToC-free end-of-data; Cormac's guard-value point |
 | Integrity digests | Hand tier a two-digit running pair; machine tier SHA-256 as printed digits; both per file and per book | Decided | Tier budgets; Fintan's rebuild check |
 | Preamble pedagogy | Multiplication taught as arrays before the weighted guard, plus the survey's idioms | Decided | Teaching record; call/0008 breach |
 | Positioning | Centuries on ISO 9706 paper; novelty is the hand tier, the preamble, erasure decode | Decided | Archival record |
 | Finder set | Two-tier distributed registration: error-correcting fiducial markers plus an interior timing mesh | Decided; amends call/0004 | prior-art.md, finder-robustness section |
 | Print resolution | 600 dpi single target | Decided; supersedes README 300 DPI | call/0004; module-vs-capture |
-| Glyph shapes, eight-glyph feasibility, burst width, interleave depth, RS/repetition split | None | Gated | Await `#measure-channel`, `#design-alphabet` |
+| Alphabet distance validation, burst width, interleave depth, RS/repetition split | None | Gated | Await `#measure-channel`, `#design-alphabet` |
 
 ## The decisions
 
 ### The radix is base 7
 
-**Decided (operator ruling):** the payload base is seven, a prime. **Gated:** only the
-feasibility of the resulting alphabet, since the radix and the glyph-alphabet size are one
-decision. The padding ruling below makes that alphabet eight glyphs, and `#design-alphabet`
-must confirm eight glyphs separate at the required visual distance on the measured channel.
-The radix value is settled at seven subject to that feasibility.
+**Decided (operator ruling):** the payload base is seven, a prime, and the eight-glyph
+alphabet it needs is now hand-approved. **Gated:** only the distance validation of those
+chosen shapes on the measured channel, since the radix and the glyph-alphabet size are one
+decision. The padding ruling below makes the alphabet eight glyphs, and the operator has
+exercised the hand-approval gate and chosen them.
 
-**The glyph shapes need human hand-approval, not measurement alone.** The pipeline may
-draft and measure candidate glyphs against the minimum-visual-distance and measured
-substitution-rate criteria, but a human signs off on the final shapes before adoption; no
-agent or algorithm self-approves the alphabet. This matches Bríd's stance that she will not
-adopt what she cannot audit, and the operator's authority over glyph decisions. So the
-alphabet is decided in two parts: the size and radix are settled here at eight glyphs over
-base seven, while the shapes stay gated on both measurement and operator hand-approval.
+**The glyph shapes are hand-approved.** Values zero to six are the Hindu-Arabic digits
+0 1 2 3 4 5 6 (candidate A from the preview), and the distinct pad glyph is a saltire, a
+diagonal cross drawn as the two diagonals of the cell, chosen for reading plainly as neither
+a digit nor the ring of zero. The hand-approval gate that Bríd's audit stance and the
+operator's authority over glyph decisions demanded is now satisfied, not pending, so no
+agent or algorithm chose the alphabet. A benefit of the digit family is worth stating: the
+payload now shares one alphabet with the preamble, which already teaches those digits, so
+the reader learns one set of marks.
+
+Measurement's remaining role is to validate these chosen shapes, not to choose them.
+`#design-alphabet` confirms that the digits zero to six and the saltire hold their minimum
+visual distance on the measured channel and flags any confusable pair. The pair to watch is
+digit zero against digit six, which share a rounded stroke that damage can close. If a pair
+proves too close under damage, that returns to the operator as a mitigation or the recorded
+eight-glyph fallback, never a silent change.
 
 The hand-tier check pair, S as the plain sum and W as the position-weighted sum, both mod
 the base, is the RAID-6 dual-parity Reed-Solomon construction. That construction is a
@@ -170,16 +178,18 @@ can emit spurious trailing values. The three roles, disambiguated:
 - **The empty-place holder inside a positional number is digit zero.** The middle place of
   "2 0 5" is the value zero, and the same glyph carries it.
 - **The end-of-data pad that fills out a short final group is a new, distinct glyph.** It is
-  not digit zero and reads differently.
+  not digit zero and reads differently. The hand-approved shape is a saltire, the two
+  diagonals of the cell, chosen to read plainly as neither a digit nor the ring of zero.
 
 Only the third role takes the distinct mark. The alphabet is therefore **radix plus one
-glyphs, which at base seven is eight**: digits zero through six, plus the distinct pad mark.
+glyphs, which at base seven is eight**: the digits zero through six, plus the saltire pad
+mark.
 
-**The pad's value under the guards.** The pad contributes zero to both S and W. It is
+**The pad's value under the guards.** The saltire contributes zero to both S and W. It is
 arithmetically zero, so a padded group's guards read as if the pad places were empty, and it
-is visually distinct from digit zero, so a reader tells end-of-data from a genuine zero
-value. The spec must state this contribution explicitly (Cormac's point: the guard tier must
-define every glyph's arithmetic).
+is visually a non-digit, so a reader tells end-of-data from a genuine zero value. The spec
+must state this contribution explicitly (Cormac's point: the guard tier must define every
+glyph's arithmetic).
 
 **Unpadding stays length-authoritative.** The distinct pad is the visible in-band signal,
 and it buys the hand decoder end-of-data detection without consulting the table of contents.
@@ -299,17 +309,16 @@ captures, and that trade belongs to the alphabet and layout design, not to a new
 
 ## What stays measurement-gated
 
-The radix value is now decided at seven, but it is decided subject to one feasibility test
-below, and none of the following is settled here. No document should present a working value
-for them as final:
+The radix value is decided at seven and the glyph shapes are hand-approved, but the
+alphabet's distance still awaits validation on the measured channel, and none of the
+following is settled here. No document should present a working value for them as final:
 
-- **The eight-glyph feasibility.** Base seven plus a distinct pad makes the alphabet eight
-  glyphs. `#design-alphabet` must confirm eight glyphs separate at the required visual
-  distance on the measured channel, or take a recorded fallback (seven glyphs by merging the
-  pad, or base five with a distinct pad).
-- **The glyph shapes**, drawn to maximise minimum visual distance against the measured
-  silent-substitution rate, and adopted only on operator hand-approval, not on a passing
-  measurement alone.
+- **The distance validation of the hand-approved alphabet.** The digits zero to six and the
+  saltire pad are chosen, but `#design-alphabet` must confirm they separate at the required
+  visual distance on the measured channel and flag any confusable pair, digit zero against
+  digit six chief among them. A pair that proves too close returns to the operator as a
+  mitigation or the recorded fallback (seven glyphs by merging the pad, or base five with a
+  distinct pad), never a silent change.
 - **The worst-case burst width** on real paper, toner, and printer, which fixes the
   interleave depth and, through the r + 1 rule, the guard count.
 - **The split between Reed-Solomon and repetition**, confirmed rather than assumed by the
@@ -339,12 +348,13 @@ cite them; the spec step runs in parallel with the first two.
    fields, and the 600 dpi lock that supersedes the README's 300 DPI. The alphabet-dependent
    constants land after the measurement. Gate: spec review passes with no contradiction
    open.
-4. **Run `#design-alphabet`.** Draw the eight glyphs against the measured substitution rate,
-   confirming eight glyphs separate at the required visual distance or taking a recorded
-   fallback (seven glyphs by merging the pad, or base five with a distinct pad).
-   Gate: the chosen alphabet meets the required minimum visual distance at the measured
-   rate, **and the operator hand-approves the final glyph shapes**, ideally reviewing
-   printed-and-scanned candidate samples. The step is not done on measurement alone.
+4. **Run `#design-alphabet`.** The shapes are hand-approved (digits zero to six plus the
+   saltire pad), so this step validates rather than chooses. Print and scan the eight glyphs,
+   confirm they separate at the required visual distance on the measured channel, and flag
+   any confusable pair, digit zero against digit six first.
+   Gate: the eight glyphs hold their minimum visual distance at the measured rate. A pair
+   that fails goes to the operator for a mitigation or the recorded fallback (seven glyphs by
+   merging the pad, or base five with a distinct pad), never a silent change.
 5. **Regenerate the preamble's concrete content** from the settled spec. The pedagogical
    skeleton is already banked in the two drafts; what regenerates is the worked figures,
    the code table, the digest section, and the unpadding teaching.
@@ -367,14 +377,18 @@ Named here for allocation by the lifecycle tool after operator acceptance; none 
 in this proposal:
 
 - **Base 7 and the guard construction.** The base-seven radix, the group-size cap of six
-  data columns, the eight-glyph feasibility gate with its recorded fallbacks, and the
-  requirement that the final glyph shapes be operator hand-approved rather than settled by
-  measurement alone. Supersedes the base-six working assumption wherever it reads as settled.
+  data columns, and the eight-glyph alphabet with its recorded fallbacks. Supersedes the
+  base-six working assumption wherever it reads as settled.
+- **The hand-approved alphabet.** Values zero to six as the Hindu-Arabic digits, the pad as a
+  saltire, the operator hand-approval that chose them, and measurement's role as distance
+  validation rather than choice. Records that the payload shares one alphabet with the
+  preamble's teaching.
 - **Redundancy and erasure-mode decoding.** Reed-Solomon at one-third, the damage-map
   erasure decode, and CIRC-style interleaving as layout law.
-- **Padding and the pad glyph.** A distinct pad mark separate from digit zero, its zero
-  contribution to S and W, and length-based unpadding as the authoritative rule and a taught
-  obligation. Disambiguates the value, the empty-place holder, and the end-of-data pad.
+- **Padding and the pad glyph.** A distinct pad mark, a saltire, separate from digit zero,
+  its zero contribution to S and W, and length-based unpadding as the authoritative rule and
+  a taught obligation. Disambiguates the value, the empty-place holder, and the end-of-data
+  pad.
 - **Integrity digests.** The hand-tier running pair and the machine-tier SHA-256, both
   printed per file and per book, with the hand digest's honest scope.
 - **Preamble pedagogy and the floor reconciliation.** The teaching order and idioms, and
@@ -390,11 +404,12 @@ in this proposal:
 
 ## Resolved rulings
 
-The six forks this proposal raised are ruled and folded into the decisions above. Recorded
-here for the reviewer's trace:
+The six forks this proposal raised are ruled and folded into the decisions above, and the
+operator has since exercised the glyph hand-approval gate. Recorded here for the reviewer's
+trace:
 
-1. **The base: seven.** Decided at base seven, gated only on the eight-glyph feasibility
-   test in `#design-alphabet`.
+1. **The base: seven.** Decided at base seven, with the eight-glyph alphabet now
+   hand-approved and only its distance validation left to `#design-alphabet`.
 2. **Multiplication: taught as arrays** before the weighted guard, `call/0008` amendment
    standing. The addition-only computation is kept as an implementation option, not the
    taught method.
@@ -406,3 +421,8 @@ here for the reviewer's trace:
 5. **Print resolution: 600 dpi**, single target, superseding the README's 300 DPI, with the
    flatbed-primary consequence recorded.
 6. **Digest coverage: per file and per book.**
+
+The follow-on glyph hand-approval gate is now exercised too. Values zero to six are the
+Hindu-Arabic digits, and the pad is a saltire, both chosen by the operator. Measurement
+validates the shapes rather than choosing them, and the payload shares one alphabet with the
+preamble's teaching.
