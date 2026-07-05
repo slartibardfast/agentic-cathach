@@ -46,11 +46,11 @@ These are not defects. They are work that waits on an input the project does not
 have.
 
 - **The physical measurement.** The critical-path root, `#measure-channel`, waits on the
-  operator. The protocol exists in [measurement-protocol.md](measurement-protocol.md);
-  its open parameters wait on a hardware choice. The operator sets the paper stock, the
-  printer and toner, the candidate module sizes, the specimen counts, and the accept
-  thresholds, then runs the print-damage-scan. Three of the four milestone tasks depend
-  on it.
+  operator. The protocol is in [measurement-protocol.md](measurement-protocol.md), and its
+  design parameters are now set (module sizes, accept thresholds, sample counts, and the
+  phone bar, in section 7). Two hardware parameters stay open for the bench, the paper stock
+  and the printer with its toner, and the operator approves the protocol before printing and
+  then runs the print-damage-scan. Three of the four milestone tasks depend on it.
 - **The spec and build lanes.** The `.allium` behaviour spec, any `.tla` timing spec,
   and the reproducible-build recipe stay inert until `cathach` gains code. That code is
   scoped only after the measurement settles the format, so the lanes wait by design.

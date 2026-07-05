@@ -1,6 +1,6 @@
 # Measurement protocol for the print-and-damage channel
 
-- Status: proposed, for operator review
+- Status: design parameters set; awaiting the hardware parameters and print approval
 - Scope: cathach
 - Date: 2026-07-05
 - Serves: [Bríd](../../cast/brid-archivist.md) (primary), and the wider cast
@@ -48,8 +48,9 @@ The specimen is a set of printed test pages carrying the real format elements at
 sizes. The exact counts are operator parameters, listed at the end; the content is fixed here.
 
 - **The eight glyphs at candidate module sizes.** Print the digits 0 to 6 and the saltire
-  pad at a few module sizes bracketing 0.22 mm at 600 dpi (call/0014), so the measurement
-  spans the size the dense tier will use and one step smaller and larger. Each glyph appears
+  pad at the four module sizes set in section 7 (0.17 to 0.34 mm at 600 dpi, bracketing
+  0.22 mm, call/0014), so the measurement spans the size the dense tier will use and one step
+  smaller and larger. Each glyph appears
   many times at each size, in isolation and adjacent to every other glyph, so a confusable
   pair shows up in context.
 - **Guarded groups in the base-7 row shape.** Lay the glyphs in guarded groups of up to six
@@ -92,7 +93,8 @@ Each damaged specimen is captured and then tallied glyph by glyph.
 
 - **Capture.** Scan on a flatbed at 600 dpi, the primary path (call/0014). Also photograph
   with a phone camera on a flat page and on a curved page, to record how far the dense tier
-  reads off a flatbed and how marginally it reads off a phone.
+  reads off a flatbed and how marginally it reads off a phone. The phone result is judged
+  against the convenience bar set in section 7.
 - **Tally, per glyph and per damage mode.** Record how often a damaged glyph is read as a
   different valid glyph (a silent substitution), how often it is destroyed recognisably (a
   located erasure), and how often it survives. Record the confusion pairs, with the count for
@@ -122,12 +124,12 @@ alphabet visual distance
   only 6 separate                     -> base 5 with distinct pad: 6 glyphs, groups of 4
   a value pair fails (e.g. 0 vs 6)    -> to operator: mitigation or recorded fallback
 
-silent-substitution rate (per glyph)
+silent-substitution rate (per glyph)     bands set (sec 7): low <0.1%, moderate 0.1-1%, high >1%
   low                                 -> two guards suffice for detection; RS budget nominal
   moderate                            -> hold two guards; raise RS share within one-third
   high                                -> to operator: alphabet or size change before coding
 
-located-erasure rate (share of damage located)
+located-erasure rate (share of damage located)     boundary set (sec 7): high >=90%, low <90%
   high (damage announces location)    -> decode in erasure mode as designed (call/0010)
   low (much damage silent)            -> to operator: the erasure-mode edge is weakened
 
@@ -158,22 +160,36 @@ distance.
   goes to the operator for a mitigation or a recorded fallback under call/0009. The alphabet
   is hand-approved, so measurement validates it and never changes it silently.
 
-## 7. Open parameters for the operator
+## 7. Design parameters, set
 
-The physical choices are the operator's. This protocol names them rather than inventing them.
+The operator ruled the design-side parameters on 2026-07-05. The hardware parameters stay
+open in section 8.
+
+- **Module sizes.** Four candidate modules at 600 dpi on clean dot counts: 0.17 mm (4 dots),
+  0.21 mm (5 dots, the target near 0.22 mm), 0.25 mm (6 dots), and 0.34 mm (8 dots, a
+  legibility reference). The instructional register sits at 3.0 mm cap-height and is tested
+  down to the 2.8 mm naked-eye floor.
+- **Accept thresholds.** The band cut points that key the decision table in section 5 are
+  set. The silent-substitution bands sit at 0.1 and 1 percent per glyph, and the
+  located-erasure boundary at 90 percent. The visual-distance floor is 99.9 percent correct
+  discrimination for every glyph pair under no damage, and the zero-against-six pair is the
+  acceptance gate.
+- **Sample counts.** A full run up front, for a tenth-of-a-percent resolution on the
+  per-glyph substitution rate. The run prints about 500 reads per glyph per module size per
+  damage mode at a fixed moderate dose, which aggregates to about 12,000 reads per glyph. It
+  adds a three-dose severity sweep per damage mode at the 0.21 mm target module, and about
+  3,000 undamaged reads per glyph per module size for the discrimination baseline. About 30
+  damaged specimens carry the registration battery, keyed on whether the two-tier finders
+  still register the page.
+- **Phone-capture bar.** A convenience bar. A flat-page phone photo in good light must
+  register the two-tier finders and decode the coarsest 0.34 mm module. A full dense decode
+  off a phone is not required, since the flatbed is the primary path (call/0014).
+
+## 8. Open parameters, for the bench
+
+Two physical choices stay with the operator and are made with the hardware in hand.
 
 - **Paper stock.** The exact ISO 9706 permanent paper stock or stocks to test, within the
   longevity positioning of call/0015.
 - **Printer and toner.** The printer model and the monochrome toner, since the failure modes
   and the substitution rate are specific to them.
-- **Module sizes.** The exact candidate module sizes bracketing 0.22 mm at 600 dpi
-  (call/0014), and the reading size of the instructional register.
-- **Sample counts.** The number of specimens, the repeats per glyph and per damage mode, and
-  the dose or severity applied in each damage mode, so the tally has enough samples to be
-  trusted.
-- **Accept thresholds.** The tolerable silent-substitution rate, the required minimum visual
-  distance between glyphs, and the band boundaries that key the decision table (the low,
-  moderate, and high cut points, and the burst-width bands).
-- **Phone-capture expectation.** How well the dense tier must read off a phone camera, given
-  the flatbed-primary consequence of call/0014, so the phone results are judged against a
-  stated bar rather than an implied one.
