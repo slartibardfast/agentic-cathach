@@ -112,3 +112,23 @@ reproducible-build recipe and specs, which wait on the software gaining code.
   zero glyph; the integrity digests; preamble pedagogy plus a `call/0008` amendment
   (floor stays counting, arithmetic is taught not assumed); longevity and novelty
   positioning; finder reuse amending `call/0004`; and the DPI resolution.
+
+## 2026-07-05 — Operator rulings and the hand-approved alphabet
+
+- The operator ruled all six open questions in the format proposal: base 7; teach
+  multiplication as arrays; a DISTINCT pad glyph (so the alphabet is eight glyphs, digits
+  plus pad); two-tier distributed registration for finders (amends `call/0004`); lock
+  600 dpi; digests per file and per book. Folded into `format-proposal.md` (commit
+  `09ba43f`).
+- Added a glyph HAND-APPROVAL gate: the eight glyph shapes need a human sign-off before
+  adoption; measurement narrows candidates but does not decide.
+- The operator then exercised that gate and HAND-APPROVED the alphabet: Hindu-Arabic
+  digits 0 to 6 for the values, and a SALTIRE (diagonal cross) for the distinct pad. The
+  payload and the preamble now share the digit alphabet. Measurement's remaining role is
+  to VALIDATE the chosen shapes (watch the digit zero against six for confusion), not to
+  choose them; a failing pair returns to the operator, not a silent change. The pad
+  saltire contributes zero to both guards while being visually a non-digit.
+- Served review artifacts (gitignored, in the poc gallery): the proposal rendered at
+  `localhost:8010/format-proposal.html`, and an alphabet preview at
+  `localhost:8010/alphabet-preview.html` (built via a small scratchpad md-to-html script,
+  since no pandoc or python-markdown is installed).
