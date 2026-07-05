@@ -153,7 +153,8 @@ Reed-Solomon, the erasure depth per group and per page, the interleave depth and
 from the worst-case burst width, and the visual-distance validation of the eight-glyph
 alphabet. The protocol that fixes them is [measurement-protocol.md](measurement-protocol.md).
 The prior-art evidence behind the decisions is [prior-art.md](prior-art.md), and the accepted
-design record they were extracted from is [format-proposal.md](format-proposal.md).
+design record they were extracted from is [format-proposal.md](format-proposal.md). A snapshot
+of what remains undone before measurement is [undone-review.md](undone-review.md).
 
 ## Build sequence
 
