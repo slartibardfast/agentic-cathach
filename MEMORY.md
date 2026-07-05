@@ -131,4 +131,30 @@ reproducible-build recipe and specs, which wait on the software gaining code.
 - Served review artifacts (gitignored, in the poc gallery): the proposal rendered at
   `localhost:8010/format-proposal.html`, and an alphabet preview at
   `localhost:8010/alphabet-preview.html` (built via a small scratchpad md-to-html script,
-  since no pandoc or python-markdown is installed).
+  since no pandoc or python-markdown is installed). NOTE: those ad-hoc renders were removed
+  in the refactor below; the doc site is now the generated mdBook.
+
+## 2026-07-05 — Refactor to the methodology's mdBook doc-site framing
+
+- Correction to the entry above: reviewing host docs by hand-rolling HTML (a scratch
+  md-to-html script plus a python http server) and dropping host `plan/` renders into the
+  SOFTWARE poc output dir violated the spine. STRUCTURE.md names `host-lifecycle book .` the
+  canonical publisher (do not hand-roll a generator), and the rooms stay separate. Removed the
+  host-doc HTML from `software/cathach/main/poc/out`.
+- The doc site is the generated mdBook: `host-lifecycle book .` writes `book.toml` +
+  `mdBook/src` + `SUMMARY.md` (all gitignored), `mdbook build` renders `mdBook/out`, and
+  `mdbook serve` on :8010 is the review surface. The book surfaces one page per milestone (its
+  README) plus cast, call, reference, memory. Supporting milestone docs (prior-art,
+  measurement-protocol, format-proposal, architecture, preamble drafts) are linked from the
+  milestone README, not separate book pages.
+- Reconciled `plan/0001` drift: the README "Open items" restated the floor, radix, alphabet,
+  and third language as open when call/0008 through call/0015 had decided them; replaced with a
+  governing-decisions summary pointing to those decisions and naming what stays genuinely gated
+  on measurement. Updated build-sequence task prose to cite the decisions and the measurement
+  protocol (anchors and verify/depends fields unchanged). Relabelled `poc-findings.md` honestly
+  as a simulation, not physical `#measure-channel` results. Marked `format-proposal.md` accepted,
+  a frozen record whose decisions now live in call/0009 through call/0015.
+- Gate stays green: `software --check` exit 0 (no HAZARDs, task graph intact), `book --check`
+  ok, prose and reconcile clean. `publish` remains a valid skip (no Site CI workflow or Pages
+  deployment yet); that is the one remaining step to publish done, and it is an outward-facing
+  choice for the operator.
