@@ -1,6 +1,7 @@
 # The dense machine tier: 64 KiB per page, cathach-native
 
 - Status: accepted
+- Superseded in part: the finder stance (no finder patterns; three corner registration marks) is revised by call/0011.
 - Scope: cathach
 - Date: 2026-07-04
 
