@@ -47,8 +47,8 @@ have.
 
 - **The physical measurement.** The critical-path root, `#measure-channel`, waits on the
   operator. The protocol is in [measurement-protocol.md](measurement-protocol.md), and its
-  design parameters are now set (module sizes, accept thresholds, sample counts, and the
-  phone bar, in section 7). Two hardware parameters stay open for the bench, the paper stock
+  design parameters are now set: the module sizes, the accept thresholds, the sample counts,
+  and the phone bar. Two hardware parameters stay open for the bench, the paper stock
   and the printer with its toner, and the operator approves the protocol before printing and
   then runs the print-damage-scan. Three of the four milestone tasks depend on it.
 - **The spec and build lanes.** The `.allium` behaviour spec, any `.tla` timing spec,

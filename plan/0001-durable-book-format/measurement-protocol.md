@@ -48,7 +48,7 @@ The specimen is a set of printed test pages carrying the real format elements at
 sizes. The exact counts are operator parameters, listed at the end; the content is fixed here.
 
 - **The eight glyphs at candidate module sizes.** Print the digits 0 to 6 and the saltire
-  pad at the four module sizes set in section 7 (0.17 to 0.34 mm at 600 dpi, bracketing
+  pad at the four module sizes fixed below (0.17 to 0.34 mm at 600 dpi, bracketing
   0.22 mm, call/0014), so the measurement spans the size the dense tier will use and one step
   smaller and larger. Each glyph appears
   many times at each size, in isolation and adjacent to every other glyph, so a confusable
@@ -94,7 +94,7 @@ Each damaged specimen is captured and then tallied glyph by glyph.
 - **Capture.** Scan on a flatbed at 600 dpi, the primary path (call/0014). Also photograph
   with a phone camera on a flat page and on a curved page, to record how far the dense tier
   reads off a flatbed and how marginally it reads off a phone. The phone result is judged
-  against the convenience bar set in section 7.
+  against the convenience bar fixed below.
 - **Tally, per glyph and per damage mode.** Record how often a damaged glyph is read as a
   different valid glyph (a silent substitution), how often it is destroyed recognisably (a
   located erasure), and how often it survives. Record the confusion pairs, with the count for
@@ -124,12 +124,12 @@ alphabet visual distance
   only 6 separate                     -> base 5 with distinct pad: 6 glyphs, groups of 4
   a value pair fails (e.g. 0 vs 6)    -> to operator: mitigation or recorded fallback
 
-silent-substitution rate (per glyph)     bands set (sec 7): low <0.1%, moderate 0.1-1%, high >1%
+silent-substitution rate (per glyph)     bands set below: low <0.1%, moderate 0.1-1%, high >1%
   low                                 -> two guards suffice for detection; RS budget nominal
   moderate                            -> hold two guards; raise RS share within one-third
   high                                -> to operator: alphabet or size change before coding
 
-located-erasure rate (share of damage located)     boundary set (sec 7): high >=90%, low <90%
+located-erasure rate (share of damage located)     boundary set below: high >=90%, low <90%
   high (damage announces location)    -> decode in erasure mode as designed (call/0010)
   low (much damage silent)            -> to operator: the erasure-mode edge is weakened
 
@@ -163,13 +163,13 @@ distance.
 ## 7. Design parameters, set
 
 The operator ruled the design-side parameters on 2026-07-05. The hardware parameters stay
-open in section 8.
+open below.
 
 - **Module sizes.** Four candidate modules at 600 dpi on clean dot counts: 0.17 mm (4 dots),
   0.21 mm (5 dots, the target near 0.22 mm), 0.25 mm (6 dots), and 0.34 mm (8 dots, a
   legibility reference). The instructional register sits at 3.0 mm cap-height and is tested
   down to the 2.8 mm naked-eye floor.
-- **Accept thresholds.** The band cut points that key the decision table in section 5 are
+- **Accept thresholds.** The band cut points that key the decision table above are
   set. The silent-substitution bands sit at 0.1 and 1 percent per glyph, and the
   located-erasure boundary at 90 percent. The visual-distance floor is 99.9 percent correct
   discrimination for every glyph pair under no damage, and the zero-against-six pair is the
