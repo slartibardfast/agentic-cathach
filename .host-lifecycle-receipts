@@ -33,3 +33,9 @@
     evidence = gate sweep green: validate plan/ call/, prose, reconcile, software --check, commit-hook tell test
     tool = host-lifecycle@0.35.1
     recorded = 2026-07-04
+
+[receipt "publish"]
+    disposition = done
+    evidence = Site workflow builds the publisher, runs book + book --check, mdbook build, and deploys mdBook/out to the gh-pages branch on push to main; GitHub Pages serves it, live at https://slartibardfast.github.io/agentic-cathach/
+    tool = host-lifecycle@0.36.0
+    recorded = 2026-07-05
