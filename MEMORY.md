@@ -173,3 +173,26 @@ reproducible-build recipe and specs, which wait on the software gaining code.
 - Recorded publish done with `host-lifecycle receipt --record publish --disposition done`;
   `software --check` is green with the phase done. The receipts ledger is append-only, so the
   earlier skip stays below the new done.
+
+## 2026-07-05 — Reviewed for undone; reconciled drifted plan docs
+
+- GOTCHA (binary provenance): a stray `/tmp/opencode/host-build/host-lifecycle` is an OLDER
+  build that expects the pre-call/0039 layout (a bare repo named `.git`) and falsely HAZARDs
+  `MISSING software/cathach/.git`. The current layout is call/0039's `.bare` store + a `.git`
+  gitdir-link file, which the PINNED v0.36.0 tool wants. Always run the session's own built
+  binary at `scratchpad/bin/host-lifecycle` (v0.36.0), not whatever `find /tmp` turns up. With
+  the right binary the gate is exit 0.
+- Reviewed for undone. Mechanical gate green, tree clean, nothing unpushed. Found doc-drift:
+  live plan docs still asserted pre-decision values, in one case contradicting a decision that
+  records itself as applied. call/0014's consequence says the README "is updated to reflect the
+  600 dpi lock", but the README still locked 300 DPI in three places (incl. a Locked-constraints
+  table). poc-findings' go/no-go gates and both preamble drafts still presented base six as
+  current, which format-proposal.md:334 requires to "read as such" (as placeholders).
+- Fix (commit `03f5c6e`): added one superseding note to each of the four docs, pointing at
+  call/0009 (base seven + hand-approved eight-glyph alphabet) and call/0014 (600 dpi). Did NOT
+  rewrite the imported research note, the simulation's own base-six output, or the draft bodies;
+  the base-six worked rows stay as records, marked as placeholders to be revised under the
+  pending #draft-preamble task. Gate stays green (prose clean, book renders, software --check
+  exit 0).
+- Still legitimately pending (not defects): the four milestone tasks (blocked on the operator +
+  hardware for #measure-channel), and the inert spec/build lanes (wait on cathach gaining code).
