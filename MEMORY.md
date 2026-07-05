@@ -158,3 +158,18 @@ reproducible-build recipe and specs, which wait on the software gaining code.
   ok, prose and reconcile clean. `publish` remains a valid skip (no Site CI workflow or Pages
   deployment yet); that is the one remaining step to publish done, and it is an outward-facing
   choice for the operator.
+
+## 2026-07-05 — Doc site published; publish phase done
+
+- The operator authorized publishing, so the reference Site workflow is wired and GitHub Pages
+  is enabled. The doc site is live at https://slartibardfast.github.io/agentic-cathach/, serving
+  the generated mdBook from the gh-pages branch. The Site workflow (on push to main) builds the
+  host-lifecycle publisher from the pinned submodule, runs `book` + `book --check`, `mdbook
+  build`, and deploys `mdBook/out` to gh-pages; Pages was enabled via `gh api ... /pages`.
+- GOTCHA: the publish phase's manifest recheck is `test -f .github/workflows/mdbook.yml`, but the
+  template ships the reference workflow as `.github/workflows/site.yml`. The workflow file MUST
+  be named `mdbook.yml` or the publish=done recheck fails and re-opens as a HAZARD. Renamed the
+  file to `mdbook.yml`; its content is the template's reference verbatim (name: Site inside).
+- Recorded publish done with `host-lifecycle receipt --record publish --disposition done`;
+  `software --check` is green with the phase done. The receipts ledger is append-only, so the
+  earlier skip stays below the new done.
