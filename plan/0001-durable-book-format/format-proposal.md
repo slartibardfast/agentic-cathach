@@ -1,6 +1,6 @@
 # Format proposal: decisions and sequence
 
-- Status: proposed, for operator review
+- Status: proposed, operator rulings folded in
 - Scope: cathach
 - Date: 2026-07-05
 - Serves: [Bríd](../../cast/brid-archivist.md) (primary), and the wider cast
@@ -9,9 +9,14 @@
 
 This proposal consolidates the prior-art survey ([prior-art.md](prior-art.md)), the cast
 review in [poc-findings.md](poc-findings.md), and the advisor critique into one reviewable
-document. It locks the decisions the record already supports, marks what stays gated on the
-unrun physical measurement, and sequences the remaining work. It is a proposal, not the
-format spec, and it does not rewrite either preamble draft.
+document. It locks the decisions the record supports, marks what stays gated on the unrun
+physical measurement, and sequences the remaining work. It is a proposal, not the format
+spec, and it does not rewrite either preamble draft.
+
+The operator has ruled on the six forks this proposal raised. Those rulings are folded in:
+the former open questions are now settled decisions, and the summary table and the affected
+subsections carry the settled values. The one revision this leaves open for a later round is
+the normative spec, not this document.
 
 The primary persona's central objection governs the whole document: a reader must never
 mistake a placeholder for a settled parameter. Every choice below is therefore labelled
@@ -19,42 +24,49 @@ mistake a placeholder for a settled parameter. Every choice below is therefore l
 principle has a gated parameter inside it (interleaving is decided, its depth is not), the
 split is stated explicitly.
 
-Two housekeeping defects surfaced during consolidation and are assigned to the sequence
-below rather than silently fixed here:
-
-- [poc-findings.md](poc-findings.md) presents itself as the data-gathering result for
-  `#measure-channel`, but its numbers come from a software simulation. No physical
-  measurement has occurred. The document needs relabelling so its status is honest.
-- The print resolution is stated twice and differently: the milestone README locks a
-  300 DPI print target, while [architecture.md](architecture.md) and `call/0004` put the
-  dense machine tier at 600 dpi with a 0.22 mm module. The normative spec must resolve
-  which number is the lock, or state that the two registers print at two resolutions.
+One housekeeping defect remains and is assigned to the sequence below rather than silently
+fixed here: [poc-findings.md](poc-findings.md) presents itself as the data-gathering result
+for `#measure-channel`, but its numbers come from a software simulation. No physical
+measurement has occurred. The document needs relabelling so its status is honest. The
+earlier print-resolution contradiction is now closed by ruling. The single target is 600
+dpi (decision below), which supersedes the README's 300 DPI lock.
 
 ## Summary
 
 | Decision | Choice | Status | Basis |
 |---|---|---|---|
-| Radix family | Prime base; seven preferred | Decided (family); exact value gated | prior-art.md, S and W verdict |
-| Group size | Data columns per group at most base minus one | Decided | Weight aliasing over the modulus |
+| Radix | Base 7 (prime) | Decided; glyph feasibility and shapes gated, shapes need hand-approval | prior-art.md, S and W verdict |
+| Group size | Six data columns per group (base minus one) | Decided | Weight aliasing over the modulus |
 | Redundancy code | Reed-Solomon at roughly one-third overhead | Decided | Peer survey; burst failure model |
 | Decode mode | Erasure mode, driven by an image-derived damage map | Decided | Reed-Solomon distance economics |
 | Layout | CIRC-style interleaving; a group's glyphs never contiguous | Principle decided; depth gated | CIRC; dvdisaster; Optar |
 | Guard scheme | Keep both S and W | Decided | Check-digit record |
 | Guard count | Erasures to recover per group, plus one | Rule decided; count gated | prior-art.md, guard-count logic |
-| Padding and the zero mark | One glyph; the pad is digit zero; unpadding is length-based and taught | Decided, flagged as a fork | Round-trip constraint; glyph budget |
-| Integrity digests | Hand tier a two-digit running pair; machine tier SHA-256 as printed digits | Shape decided | Tier budgets; Fintan's rebuild check |
-| Preamble pedagogy | Multiplication taught before the weighted guard, plus the survey's idioms | Decided | Teaching record; call/0008 breach |
+| Padding and the zero mark | Distinct pad glyph; alphabet is eight glyphs; unpadding is length-based and taught | Decided; eight-glyph feasibility gated | ToC-free end-of-data; Cormac's guard-value point |
+| Integrity digests | Hand tier a two-digit running pair; machine tier SHA-256 as printed digits; both per file and per book | Decided | Tier budgets; Fintan's rebuild check |
+| Preamble pedagogy | Multiplication taught as arrays before the weighted guard, plus the survey's idioms | Decided | Teaching record; call/0008 breach |
 | Positioning | Centuries on ISO 9706 paper; novelty is the hand tier, the preamble, erasure decode | Decided | Archival record |
-| Finder set | Reuse a proven finder vocabulary | Decided; amends call/0004 | PaperBack failure against QR success |
-| Exact radix, glyph shapes, burst width, interleave depth, RS/repetition split | None | Gated | Await `#measure-channel`, `#design-alphabet` |
+| Finder set | Two-tier distributed registration: error-correcting fiducial markers plus an interior timing mesh | Decided; amends call/0004 | prior-art.md, finder-robustness section |
+| Print resolution | 600 dpi single target | Decided; supersedes README 300 DPI | call/0004; module-vs-capture |
+| Glyph shapes, eight-glyph feasibility, burst width, interleave depth, RS/repetition split | None | Gated | Await `#measure-channel`, `#design-alphabet` |
 
 ## The decisions
 
-### The radix is prime, seven preferred
+### The radix is base 7
 
-**Decided:** the payload base is a prime, with seven the recommendation. **Gated:** the
-final value, because the radix and the glyph-alphabet size are one decision, settled
-together in `#design-alphabet` against the measured substitution rate.
+**Decided (operator ruling):** the payload base is seven, a prime. **Gated:** only the
+feasibility of the resulting alphabet, since the radix and the glyph-alphabet size are one
+decision. The padding ruling below makes that alphabet eight glyphs, and `#design-alphabet`
+must confirm eight glyphs separate at the required visual distance on the measured channel.
+The radix value is settled at seven subject to that feasibility.
+
+**The glyph shapes need human hand-approval, not measurement alone.** The pipeline may
+draft and measure candidate glyphs against the minimum-visual-distance and measured
+substitution-rate criteria, but a human signs off on the final shapes before adoption; no
+agent or algorithm self-approves the alphabet. This matches Bríd's stance that she will not
+adopt what she cannot audit, and the operator's authority over glyph decisions. So the
+alphabet is decided in two parts: the size and radix are settled here at eight glyphs over
+base seven, while the shapes stay gated on both measurement and operator hand-approval.
 
 The hand-tier check pair, S as the plain sum and W as the position-weighted sum, both mod
 the base, is the RAID-6 dual-parity Reed-Solomon construction. That construction is a
@@ -85,15 +97,13 @@ distance three over the prime base:
   - every transposition detected, adjacent or jump
 ```
 
-**Contingency, if measurement forces six.** If `#design-alphabet` finds the paper and
-toner cannot bear a seventh glyph at the required visual distance, keep base six but do one
-of two things honestly: scope the advertised guarantee down to what the plain sum secures
-(one located erasure recovered, one substitution detected, adjacent transpositions
-detected), or replace the linear weighted guard with a Verhoeff or Damm style digit, which
-reaches full detection over a composite base at the cost of hand-computability
-(prior-art.md, hand check digits; https://en.wikipedia.org/wiki/Check_digit). Advertising
-the full distance-three guarantee over base six would be false, and this proposal rules it
-out.
+**Contingency.** The eight-glyph budget the padding ruling creates is the one remaining
+risk to base seven, and its fallbacks are recorded with the padding decision below. Both
+fallbacks keep a prime base (seven with the pad merged into digit zero, or five with a
+distinct pad), so the distance-three guarantee holds in either. A composite base is not on
+the path: advertising the full distance-three guarantee over base six would be false, since
+its weighted guard is not a code over a field, and this proposal rules that route out
+(prior-art.md, hand check digits; https://en.wikipedia.org/wiki/Check_digit).
 
 ### Redundancy is Reed-Solomon, decoded in erasure mode
 
@@ -145,42 +155,57 @@ Both the worst-case burst width and the achievable interleave depth come from
 `#measure-channel`, so the count cannot be fixed before it (prior-art.md, guard-count
 logic).
 
-### One zero glyph, and length-based unpadding
+### A distinct pad glyph, and length-based unpadding
 
-**Decided now, radix-independent.** The cast found a contradiction between the drafts:
-[preamble-draft.md](preamble-draft.md) pads the last group with the digit zero, while
-[preamble-proposal-nuala.md](preamble-proposal-nuala.md) pads with an "absence mark" that
-its own teaching introduces as the empty-place holder, which is the positional zero under
-another name. The unpadding rule is missing from both drafts, so a hand decode of a file
-whose digit stream leaves the last group partly filled can emit spurious trailing values.
+**Decided (operator ruling).** The cast found the two drafts conflating three roles that
+this decision now separates. Nuala's "absence mark"
+([preamble-proposal-nuala.md](preamble-proposal-nuala.md)) served both as the empty-place
+holder inside a positional number and as the end-of-data pad, while
+[preamble-draft.md](preamble-draft.md) padded with digit zero. Neither draft teaches
+unpadding, so a hand decode of a file whose digit stream leaves the last group partly filled
+can emit spurious trailing values. The three roles, disambiguated:
 
-The decision: **the absence mark and the digit zero are one glyph.** The alphabet holds
-exactly radix glyphs. Zero is a positive mark, never a blank (Nuala's rule stands: a blank
-cannot be told from damage). Length removes the padding: the decoder keeps only as many
-values as the file's recorded length and discards the rest of the final group.
-The manifest's per-file length is already a locked constraint of the design (README, locked
-constraints: byte fidelity is exact, with explicit per-file length and a defined padding
-convention), so length-based unpadding adds no new machinery. What it adds is a teaching
-obligation: **the preamble must teach the reader to read the file's length from the table
-of contents and keep only that many values.** No current draft does, and the preamble
-regeneration step below carries the fix.
+- **Digit zero is a value.** It is a positive mark, never a blank (Nuala's rule stands: a
+  blank cannot be told from damage).
+- **The empty-place holder inside a positional number is digit zero.** The middle place of
+  "2 0 5" is the value zero, and the same glyph carries it.
+- **The end-of-data pad that fills out a short final group is a new, distinct glyph.** It is
+  not digit zero and reads differently.
 
-The basis for one glyph rather than two: the glyph alphabet is the format's scarcest
-resource, since every added glyph shrinks the minimum visual distance the measurement must
-protect. One more glyph is better spent buying the prime base seven than a pad marker whose
-job the manifest already performs. A distinct pad glyph would also need a defined numeric
-value under S and W in any case, so it saves the reader nothing.
+Only the third role takes the distinct mark. The alphabet is therefore **radix plus one
+glyphs, which at base seven is eight**: digits zero through six, plus the distinct pad mark.
 
-This is a real fork and is listed in the open questions: the alternative (a distinct
-absence glyph, radix plus one glyphs, value zero under the guards) lets a hand decoder
-recognise end-of-data without consulting the table of contents, at the cost of one glyph of
-alphabet budget.
+**The pad's value under the guards.** The pad contributes zero to both S and W. It is
+arithmetically zero, so a padded group's guards read as if the pad places were empty, and it
+is visually distinct from digit zero, so a reader tells end-of-data from a genuine zero
+value. The spec must state this contribution explicitly (Cormac's point: the guard tier must
+define every glyph's arithmetic).
+
+**Unpadding stays length-authoritative.** The distinct pad is the visible in-band signal,
+and it buys the hand decoder end-of-data detection without consulting the table of contents.
+The authoritative rule stays the recorded length: the decoder keeps only as many values as
+the file's recorded length and discards the rest of the final group. The manifest's per-file
+length is already a locked constraint (README, locked constraints: byte fidelity is exact,
+with explicit per-file length and a defined padding convention), so length-based unpadding
+adds no new machinery. It adds a teaching obligation: **the preamble must teach both the
+distinct pad as the end-of-data mark and the file length from the table of contents as the
+authority.** No current draft does either, and the preamble regeneration step below carries
+the fix.
+
+**Compound contingency, gated on `#design-alphabet`.** Base seven and a distinct pad
+together push the alphabet to eight glyphs, which raises the stakes on the alphabet
+measurement. If `#design-alphabet` finds the paper and toner cannot separate eight glyphs at
+the required visual distance, the fallbacks in order are: (i) merge the pad back into digit
+zero, for seven glyphs, which loses the ToC-free end-of-data signal while length-based
+unpadding still governs; or (ii) drop to base five with a distinct pad, for six glyphs and
+shorter groups of four data columns. Both fallbacks keep a prime base, so the
+distance-three guarantee holds either way.
 
 ### The digests, one per tier, both printed
 
-**Shape decided now; final constants belong to the spec.** Fintan's whole tier is verifying
-a rebuilt decoder against what the page shows, so both digests must be specified exactly
-and printed concretely.
+**Decided (operator ruling): both digests print per file and per book.** The final printed
+constants belong to the spec. Fintan's whole tier is verifying a rebuilt decoder against
+what the page shows, so both digests must be specified exactly and printed concretely.
 
 **Hand tier: a two-digit running pair in the payload base.** Over the data digits of the
 covered span, in the reading order the corner marks fix, with guards excluded, keep two
@@ -207,14 +232,18 @@ against the same printed digest, so repair and verification stay independent evi
 preamble regeneration step adopts all of them (prior-art.md, lessons taken for the
 preamble):
 
-- **Teach multiplication before the weighted guard.** Multiplication is built as arrays and
-  repeated equal groups, before any figure uses it. The weight is then presented as "copy
-  each column's digit as many times as the strokes beneath it, and add". Every weight is at
-  most the group length and every digit less than the base, so the arrays are tiny and
-  fully drawable. This closes the floor breach: `call/0008` fixes the floor at counting,
-  yet its budget names addition and multiplication, and no draft teaches multiplication.
-  The reconciliation is recorded as a decision (below): the floor stays at counting, and
-  addition and multiplication are taught, never assumed.
+- **Teach multiplication as arrays, before the weighted guard (operator ruling).**
+  Multiplication is built as arrays and repeated equal groups, before any figure uses it.
+  The weight is then presented as "copy each column's digit as many times as the strokes
+  beneath it, and add". Every weight is at most the group length and every digit less than
+  the base, so the arrays are tiny and fully drawable. This closes the floor breach:
+  `call/0008` fixes the floor at counting, yet its budget names addition and
+  multiplication, and no draft teaches multiplication. The reconciliation is recorded as a
+  decision (below): the floor stays at counting, and addition and multiplication are
+  taught, never assumed. An addition-only computation of the weighted guard exists (the same
+  double running sum the hand digest uses), and it stays available as an implementation
+  option, but the array figure is the taught method, because it teaches what the weight
+  means.
 - **An explicit units-position marker**, so reading direction and place value are fixed by
   the figure rather than inferred (the Arecibo precedent, and the nuclear-marker warning
   that direction must never be inferred).
@@ -237,31 +266,57 @@ a metal-etch millennium, and the substrate, not the toner, is the limit (prior-a
 archival lessons). The genuine novelty is the unaided pen-and-paper hand tier, the
 self-describing preamble on commodity print, the bound-book form, and erasure-mode decoding
 against a named physical failure model. The coding core (Reed-Solomon, interleaving,
-finder patterns) is prior art to reuse, never reinvent.
+registration) is prior art to reuse, never reinvent.
 
-One consequence amends an existing decision. `call/0004` gives the native dense field "a
-thin border and three corner registration marks" and "no finder patterns". The survey's
-verdict is that coarse finders alone are what makes PaperBack fail where QR succeeds, and
-the lesson is to reuse a proven finder vocabulary: the QR triad of finder, timing, and
-alignment marks, or a rotation-invariant bullseye (prior-art.md, lessons taken). This
-proposal adopts finder reuse and flags the `call/0004` amendment below.
+### Two-tier distributed registration
+
+**Decided (operator ruling).** The native dense field carries two registration tiers:
+error-correcting fiducial markers (STag, ChArUco, or AprilTag style, about two to three
+millimetres) at the page corners and edges for global orientation and homography, and an
+interior mesh of dedicated timing marks refined to sub-pixel precision for local grid pitch
+and page curl.
+
+The reason is a single-point-of-failure argument. Corner-only finders kill the whole read
+when damage lands on the finder, which is the registration fragility that makes PaperBack
+fail in practice, and QR's own finder patterns carry no error correction. A distributed mesh
+resynchronizes locally, so damage to one mark stays regional, and the mesh absorbs paper
+stretch and curl (Optar's precedent). Error-correcting fiducial markers survive damage to a
+marker, since a small lattice still fixes orientation and warp when any one marker is lost
+(prior-art.md, "Finder and registration robustness"; https://arxiv.org/abs/1707.06292 ;
+https://www.mdpi.com/2076-3417/10/21/7814 ; http://ronja.twibright.com/optar/). This amends
+`call/0004`'s bare corner-registration stance, flagged below.
+
+### Print resolution
+
+**Decided (operator ruling): a single 600 dpi target.** It supersedes the README's 300 DPI
+lock and closes the contradiction with `call/0004` and [architecture.md](architecture.md).
+
+One consequence is recorded rather than left open. A 0.22 mm module at 600 dpi is about five
+scanner pixels, which a flatbed reads natively but a phone camera reads only marginally on a
+curved page (prior-art.md, module against capture). The dense tier therefore leans
+flatbed-primary. The phone path Aoife wants asks for larger modules or several fused
+captures, and that trade belongs to the alphabet and layout design, not to a new fork.
 
 ## What stays measurement-gated
 
-None of the following is decided here, and no document should present a working value for
-them as settled:
+The radix value is now decided at seven, but it is decided subject to one feasibility test
+below, and none of the following is settled here. No document should present a working value
+for them as final:
 
-- **The exact radix** among the prime candidates, and with it the final group size. The
-  alphabet and the radix are one decision, made in `#design-alphabet`.
-- **The glyph shapes and the alphabet size**, drawn to maximise minimum visual distance
-  against the measured silent-substitution rate.
+- **The eight-glyph feasibility.** Base seven plus a distinct pad makes the alphabet eight
+  glyphs. `#design-alphabet` must confirm eight glyphs separate at the required visual
+  distance on the measured channel, or take a recorded fallback (seven glyphs by merging the
+  pad, or base five with a distinct pad).
+- **The glyph shapes**, drawn to maximise minimum visual distance against the measured
+  silent-substitution rate, and adopted only on operator hand-approval, not on a passing
+  measurement alone.
 - **The worst-case burst width** on real paper, toner, and printer, which fixes the
   interleave depth and, through the r + 1 rule, the guard count.
 - **The split between Reed-Solomon and repetition**, confirmed rather than assumed by the
   channel measurement.
 
-All four hang on `#measure-channel` and `#design-alphabet`. The base-six values in the POC,
-the drafts, and the architecture stub are working placeholders and must read as such.
+All hang on `#measure-channel` and `#design-alphabet`. The base-six values in the POC, the
+drafts, and the architecture stub are working placeholders and must read as such.
 
 ## The sequence
 
@@ -278,15 +333,18 @@ cite them; the spec step runs in parallel with the first two.
    printer. The only step needing hardware. While relabelling for this step, fix
    [poc-findings.md](poc-findings.md) so it presents as the simulation it is.
    Gate: measured substitution rate, erasure rate, and worst-case burst width recorded.
-3. **Nail the normative format spec.** The radix-independent parts are decidable now and
-   run in parallel with the two steps above: the padding and zero decision, the digest
-   definitions, the header and table-of-contents fields, and the DPI contradiction between
-   the README lock and `call/0004`. The radix-dependent constants land after the
-   measurement. Gate: spec review passes with no contradiction open.
-4. **Run `#design-alphabet`.** Apply the prime-base decision and its contingency to fix
-   the radix, and draw the glyphs against the measured substitution rate.
+3. **Nail the normative format spec.** The settled parts are writable now and run in
+   parallel with the two steps above: the distinct-pad and guard-value convention, the
+   length-based unpadding rule, the digest definitions, the header and table-of-contents
+   fields, and the 600 dpi lock that supersedes the README's 300 DPI. The alphabet-dependent
+   constants land after the measurement. Gate: spec review passes with no contradiction
+   open.
+4. **Run `#design-alphabet`.** Draw the eight glyphs against the measured substitution rate,
+   confirming eight glyphs separate at the required visual distance or taking a recorded
+   fallback (seven glyphs by merging the pad, or base five with a distinct pad).
    Gate: the chosen alphabet meets the required minimum visual distance at the measured
-   rate.
+   rate, **and the operator hand-approves the final glyph shapes**, ideally reviewing
+   printed-and-scanned candidate samples. The step is not done on measurement alone.
 5. **Regenerate the preamble's concrete content** from the settled spec. The pedagogical
    skeleton is already banked in the two drafts; what regenerates is the worked figures,
    the code table, the digest section, and the unpadding teaching.
@@ -308,48 +366,43 @@ preamble drafts, and the stub architecture.
 Named here for allocation by the lifecycle tool after operator acceptance; none is written
 in this proposal:
 
-- **Prime radix and the guard construction.** The radix family, the seven-preferred
-  recommendation, the forced-six contingency, and the group-size cap. Supersedes the
-  base-six working assumption wherever it reads as settled.
+- **Base 7 and the guard construction.** The base-seven radix, the group-size cap of six
+  data columns, the eight-glyph feasibility gate with its recorded fallbacks, and the
+  requirement that the final glyph shapes be operator hand-approved rather than settled by
+  measurement alone. Supersedes the base-six working assumption wherever it reads as settled.
 - **Redundancy and erasure-mode decoding.** Reed-Solomon at one-third, the damage-map
   erasure decode, and CIRC-style interleaving as layout law.
-- **Padding and the zero mark.** One glyph, positive mark, length-based unpadding as a
-  taught obligation.
+- **Padding and the pad glyph.** A distinct pad mark separate from digit zero, its zero
+  contribution to S and W, and length-based unpadding as the authoritative rule and a taught
+  obligation. Disambiguates the value, the empty-place holder, and the end-of-data pad.
 - **Integrity digests.** The hand-tier running pair and the machine-tier SHA-256, both
-  printed, with the hand digest's honest scope.
+  printed per file and per book, with the hand digest's honest scope.
 - **Preamble pedagogy and the floor reconciliation.** The teaching order and idioms, and
   the amendment to `call/0008`: the floor stays counting, and addition and multiplication
   are taught, never assumed. Recorded as a new decision that amends 0008, since records are
   immutable.
 - **Longevity and novelty positioning.** The centuries claim and the honest-novelty
   statement, so marketing and spec never drift apart.
-- **Finder reuse.** Amends `call/0004`'s no-finder-pattern stance.
-- **Print resolution.** Whichever way the DPI contradiction resolves, recorded so the
-  README lock and `call/0004` agree.
+- **Two-tier distributed registration.** Error-correcting fiducial markers plus an interior
+  timing mesh. Amends `call/0004`'s bare corner-registration stance.
+- **Print resolution.** The single 600 dpi target, recorded so the README lock and
+  `call/0004` agree, with the flatbed-primary consequence.
 
-## Open questions for the operator
+## Resolved rulings
 
-The real forks. Each has a recommendation above; the operator's ruling closes it.
+The six forks this proposal raised are ruled and folded into the decisions above. Recorded
+here for the reviewer's trace:
 
-1. **The base.** Rule on seven (recommended) against five, and on the forced-six
-   contingency: if the alphabet measurement pins the radix at six, choose between scoping
-   the guarantee down to the plain sum's powers and replacing the weighted guard with a
-   Verhoeff or Damm digit that costs hand-computability.
-2. **Multiplication in the hand tier.** Rule on teaching multiplication as arrays before
-   the weighted guard (recommended), against redesigning the guard to avoid multiplication
-   entirely. One observation feeds this: the weighted sum admits an addition-only
-   computation, the same double running sum the digest uses, whose accumulated weights are
-   an equivalent set over a prime base. If that becomes the taught method, the weighted
-   guard needs no multiplication at all and the floor amendment could stop at addition.
-   The recommendation stands with arrays, because the array figure teaches what the weight
-   means, but the fork is genuine and affects both the preamble length and `call/0008`.
-3. **The absence mark.** Rule on one glyph with length-based unpadding (recommended),
-   against a distinct pad glyph at radix plus one, which buys ToC-free end-of-data
-   detection for a hand decoder at the cost of one glyph of alphabet budget.
-4. **Finder patterns.** Confirm the amendment of `call/0004`: adopt a proven finder set
-   for the native dense field in place of the bare corner registration marks.
-5. **Print resolution.** Rule on the DPI lock: 300 DPI as the README states, 600 dpi as
-   `call/0004` assumes, or an explicit two-register rule with each register at its own
-   resolution.
-6. **Digest coverage.** Confirm the hand digest prints per file and for the whole book
-   (recommended), or narrow it to one of the two.
+1. **The base: seven.** Decided at base seven, gated only on the eight-glyph feasibility
+   test in `#design-alphabet`.
+2. **Multiplication: taught as arrays** before the weighted guard, `call/0008` amendment
+   standing. The addition-only computation is kept as an implementation option, not the
+   taught method.
+3. **The pad glyph: distinct.** A separate end-of-data mark at radix plus one (eight glyphs
+   at base seven), zero under both guards, with length-based unpadding authoritative and a
+   compound feasibility contingency recorded.
+4. **Finders: two-tier distributed registration.** Error-correcting fiducial markers plus an
+   interior timing mesh, an amendment to `call/0004`.
+5. **Print resolution: 600 dpi**, single target, superseding the README's 300 DPI, with the
+   flatbed-primary consequence recorded.
+6. **Digest coverage: per file and per book.**
