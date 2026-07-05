@@ -4,6 +4,13 @@ This is a working draft of the cathach preamble: the readable opening that teach
 reader to decode the book by hand, before any machine. It is the sparsest and most
 protected part of the book, and the one part that must survive with nothing else.
 
+This draft predates the base decision. It works its dense rows in base six as a
+placeholder; the payload base is now seven
+([call/0009](../../call/0009-payload-symbols-and-guards.md)), and the arithmetic is
+taught from the tally floor by the pedagogy in
+[call/0013](../../call/0013-preamble-pedagogy-and-floor.md). Revising the worked rows
+to base seven belongs to the pending #draft-preamble task.
+
 The final preamble is trilingual, so the same meaning is carried in three languages
 chosen by literate-speaker population: English, Mandarin, and Spanish (see
 [call/0007](../../call/0007-preamble-languages.md)). This draft is the English text plus

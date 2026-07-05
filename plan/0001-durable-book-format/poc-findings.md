@@ -146,6 +146,15 @@ design calls for.
 
 ## Go / no-go gates
 
+Since this simulation ran, decisions have closed the first gates. The payload base is
+seven with a hand-approved eight-glyph alphabet
+([call/0009](../../call/0009-payload-symbols-and-guards.md)), which supersedes the
+base-six radix and the digit-only alphabet the list below still leaves open, and the
+print resolution is 600 dpi ([call/0014](../../call/0014-print-resolution.md)). Gate 4,
+the physical measurement, stays open and is now specified in
+[measurement-protocol.md](measurement-protocol.md). The base-six numbers above are the
+simulation's own output and stand as a record of it.
+
 Decide these before the spec-driven pipeline starts:
 
 1. **Alphabet (resolved).** Digits (A) for the human tier, and the format goes

@@ -18,6 +18,13 @@ The design is imported from a research note (`cathach-design.md`, 2026-07). It i
 reproduced here as the milestone's design context; the open items it lists become
 the build sequence at the end.
 
+The physical parameters shown in the reproduced note are historical. Where they
+differ from the Governing decisions section below, that section is authoritative:
+the print target is 600 dpi ([call/0014](../../call/0014-print-resolution.md)), not
+the 300 DPI the note locks, and the payload base is seven
+([call/0009](../../call/0009-payload-symbols-and-guards.md)), not the small radix the
+note leaves open.
+
 ## Design: a durable printed-book encoding
 
 Cathach encodes an arbitrary file tree as a printed book that decodes back to exact

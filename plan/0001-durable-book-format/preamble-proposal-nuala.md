@@ -8,6 +8,13 @@ teaching off the sentence and onto the figure wherever a sentence would only wor
 for a reader whose own language already thinks in base ten, reads in one direction,
 or has a grammar of number-words.
 
+This draft predates the base decision. It works its dense rows in base six as a
+placeholder; the payload base is now seven
+([call/0009](../../call/0009-payload-symbols-and-guards.md)), and the arithmetic is
+taught from the tally floor by the pedagogy in
+[call/0013](../../call/0013-preamble-pedagogy-and-floor.md). Revising the worked rows
+to base seven belongs to the pending #draft-preamble task.
+
 The floor, the budget, the three languages, and the reserved base six are unchanged
 (see [call/0007](../../call/0007-preamble-languages.md) and
 [call/0008](../../call/0008-assumed-knowledge-floor.md)). What changes is where the
