@@ -136,7 +136,9 @@ settled and recorded as decisions, which govern this milestone:
 
 - The assumed-knowledge floor is tally strokes ([call/0008](../../call/0008-assumed-knowledge-floor.md)),
   with the budget's arithmetic taught from that floor, not assumed
-  ([call/0013](../../call/0013-preamble-pedagogy-and-floor.md)).
+  ([call/0013](../../call/0013-preamble-pedagogy-and-floor.md)), and with subtraction,
+  the repair's own operation, named in the budget and taught the same way
+  ([call/0016](../../call/0016-subtraction-taught-from-the-floor.md)).
 - The payload base is seven, with a hand-approved alphabet of the digits 0 to 6 and a saltire
   pad, eight glyphs in all ([call/0009](../../call/0009-payload-symbols-and-guards.md)). The
   glyph shapes are hand-approved, and the measurement validates their visual distance.
@@ -154,7 +156,9 @@ from the worst-case burst width, and the visual-distance validation of the eight
 alphabet. The protocol that fixes them is [measurement-protocol.md](measurement-protocol.md).
 The prior-art evidence behind the decisions is [prior-art.md](prior-art.md), and the accepted
 design record they were extracted from is [format-proposal.md](format-proposal.md). A snapshot
-of what remains undone before measurement is [undone-review.md](undone-review.md).
+of what remains undone before measurement is [undone-review.md](undone-review.md). The cast's
+review of the milestone from the humanist standpoint is
+[humanist-review.md](humanist-review.md).
 
 ## Build sequence
 
@@ -189,9 +193,26 @@ fallback if the eight glyphs cannot be separated at the required visual distance
 The floor is settled at tally strokes ([call/0008](../../call/0008-assumed-knowledge-floor.md)).
 Draft the trilingual preamble by the pedagogy in
 [call/0013](../../call/0013-preamble-pedagogy-and-floor.md), which teaches the budget's
-arithmetic from that floor. English and Mandarin are joined by Spanish as the third language
+arithmetic from that floor, and teach subtraction from strokes before the first repair
+figure uses it ([call/0016](../../call/0016-subtraction-taught-from-the-floor.md)). English
+and Mandarin are joined by Spanish as the third language
 ([call/0007](../../call/0007-preamble-languages.md)). Two working drafts are under way, in
 [preamble-draft.md](preamble-draft.md) and [preamble-proposal-nuala.md](preamble-proposal-nuala.md).
+The gate includes a trilingual equivalence review: the three texts must carry identical
+mathematical meaning, per [Nuala](../../cast/nuala-numeral-linguist.md)'s standard.
+
+### Blind hand-decode trial {#blind-decode-trial}
+
+- depends: #draft-preamble
+- verify: attested operator
+
+A person who has never seen the spec recovers a page from the printed preamble alone.
+[format-proposal.md](format-proposal.md) names this trial as the preamble's own test, and
+every failure becomes a preamble fix. One pass runs figure-only: the reader works from the
+shared figures with the prose in a language they cannot read, which tests that the figures
+carry the load and de-risks the language choice of
+[call/0007](../../call/0007-preamble-languages.md) across the horizon of
+[call/0015](../../call/0015-longevity-and-positioning.md).
 
 ### Scope the cross-platform Rust pipeline {#scope-rust-pipeline}
 
@@ -202,3 +223,10 @@ Scope the cross-platform Rust software: a static folder-to-PDF/A-3 encoder, and 
 bidirectional FUSE wrapper for Linux and macOS. Author the `.allium` behaviour spec
 (and any `.tla` timing spec) before the code, per the project's specification-driven
 discipline, and record the build in `.host-software` as per-platform builds.
+
+The format spec includes printed known-answer tests: a worked specimen with its exact
+bytes and both digests, so a rebuilt decoder is checked against the book's own pages
+([Fintan](../../cast/fintan-tool-rebuilder.md)'s rebuild check). The browser-based decode
+path that [Aoife](../../cast/aoife-casual-reader.md)'s modality rests on, a reader with
+nothing installed, is out of this task's scope and is owed its own milestone once the
+format settles.
