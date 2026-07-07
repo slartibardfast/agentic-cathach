@@ -773,7 +773,7 @@ appears.
 - Specs. No `.allium` or `.tla` file exists yet, so the requirements and timing
   lanes stay inert. Wire `tools/allium` or `tools/specula` and their skills before
   authoring the first spec of either kind, following the ladder above.
-- Personas. `cast/` holds cathach's five personas, built with the operator by the
+- Personas. `cast/` holds cathach's six personas, built with the operator by the
   process in `cast/applying-personas.md`. Bríd the archivist-preservationist is the
   primary. Their goals and scenarios feed the milestone stories in `plan/`.
 - The gate. The `host-lint` commit hooks are installed from the pinned
