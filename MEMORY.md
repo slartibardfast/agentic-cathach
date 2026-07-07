@@ -229,3 +229,28 @@ reproducible-build recipe and specs, which wait on the software gaining code.
   inert allow file. Positional "section N" prose cross-refs DO warn and are a real tell-shape; I
   reworded mine to directional content ("fixed below", "the decision table above") to match the
   protocol's own established style ("listed at the end", "the decision table below").
+
+## 2026-07-07: Cast humanist review, recorded and addressed
+
+- Ran the six-persona humanist review of plan/0001 at the operator's request; findings and
+  dispositions live in plan/0001-durable-book-format/humanist-review.md.
+- The sharp findings: (a) subtraction, the repair's own operation, was used but never taught
+  and absent from the budget — the same taught-never-assumed breach call/0013 closed for
+  multiplication. Closed by call/0016 (Amended lines added to call/0008 and call/0013).
+  (b) The blind hand-decode trial that format-proposal.md step-sequence said "should be added
+  to the milestone's build sequence as a task" had never been added; now #blind-decode-trial,
+  depends #draft-preamble, with a figure-only pass (reader works from figures with prose in a
+  language they cannot read) that de-risks call/0007 over call/0015's horizon.
+- Protocol amendments (pre-approval, so no re-approval churn): a source-transcription specimen
+  (decoder source character set through the damage battery, for Fintan's tier) and a
+  readers-and-conditions rule (eye reads record age + lighting; naked-eye floor judged against
+  an older unaided eye — the far-future reader has no optometry).
+- Task-text amendments: #draft-preamble gains the trilingual equivalence review gate (Nuala)
+  and call/0016; #scope-rust-pipeline gains the printed known-answer-test spec obligation
+  (Fintan) and records Aoife's browser-decode path as owed its own milestone (it existed in
+  no plan at all — her modality was unserved beyond the phone-capture bar).
+- CLAUDE.md project-specifics said "five personas"; the cast holds six (Nuala joined later).
+  Corrected.
+- Gate green end to end: validate ok, prose clean, reconcile clean, tasks parse (5 tasks,
+  frontier unchanged at #measure-channel), book renders (call room now 17 pages), software
+  --check exit 0. All commits pushed individually per the audited-plans discipline.
