@@ -62,6 +62,12 @@ sizes. The exact counts are operator parameters, listed at the end; the content 
 - **The two-tier registration marks.** Include the error-correcting fiducial markers at the
   page corners and edges and an interior mesh of timing marks (call/0011), so the damage
   battery can test whether registration survives a hit that would kill a corner-only finder.
+- **A source-transcription specimen.** One page of dense program text in the instructional
+  register at its reading size, drawn from the character set the printed decoder source
+  uses (its C and its Forth), run through the same damage battery. The tool-rebuilder's
+  channel is transcription of that register, so its confusable pairs (the digit one against
+  the lowercase L, and the digit zero against the letter O) are measured beside the payload
+  glyphs rather than assumed.
 
 ## 3. The damage battery
 
@@ -102,6 +108,11 @@ Each damaged specimen is captured and then tallied glyph by glyph.
 - **Burst measurement.** For each contiguous insult, record the size of the largest damaged
   region that still decodes, in glyph widths, both before and after interleaving is modelled.
   This is the worst-case burst width that feeds the decision table.
+- **Readers and conditions.** Wherever a read is made by eye rather than by the scanner
+  pipeline, the tally records the reader's age and the lighting. Where more than one reader
+  is available, the eye reads span differing ages, and the naked-eye floor of the
+  instructional register is judged against an older unaided eye, not the operator's alone,
+  since the far-future reader has no lens by circumstance (call/0015).
 
 ## 5. The decision table
 
