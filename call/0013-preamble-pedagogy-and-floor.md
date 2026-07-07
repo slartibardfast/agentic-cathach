@@ -1,6 +1,7 @@
 # Preamble pedagogy and the floor reconciliation
 
 - Status: accepted
+- Amended: call/0016 extends the taught arithmetic to subtraction, the repair's operation.
 - Scope: cathach
 - Date: 2026-07-05
 
