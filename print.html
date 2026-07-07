@@ -501,7 +501,9 @@ settled and recorded as decisions, which govern this milestone:</p>
 <ul>
 <li>The assumed-knowledge floor is tally strokes (<a href="plan/0001-durable-book-format/../../call/0008-assumed-knowledge-floor.html">call/0008</a>),
 with the budget's arithmetic taught from that floor, not assumed
-(<a href="plan/0001-durable-book-format/../../call/0013-preamble-pedagogy-and-floor.html">call/0013</a>).</li>
+(<a href="plan/0001-durable-book-format/../../call/0013-preamble-pedagogy-and-floor.html">call/0013</a>), and with subtraction,
+the repair's own operation, named in the budget and taught the same way
+(<a href="plan/0001-durable-book-format/../../call/0016-subtraction-taught-from-the-floor.html">call/0016</a>).</li>
 <li>The payload base is seven, with a hand-approved alphabet of the digits 0 to 6 and a saltire
 pad, eight glyphs in all (<a href="plan/0001-durable-book-format/../../call/0009-payload-symbols-and-guards.html">call/0009</a>). The
 glyph shapes are hand-approved, and the measurement validates their visual distance.</li>
@@ -519,7 +521,9 @@ from the worst-case burst width, and the visual-distance validation of the eight
 alphabet. The protocol that fixes them is <a href="plan/0001-durable-book-format/measurement-protocol.html">measurement-protocol.md</a>.
 The prior-art evidence behind the decisions is <a href="plan/0001-durable-book-format/prior-art.html">prior-art.md</a>, and the accepted
 design record they were extracted from is <a href="plan/0001-durable-book-format/format-proposal.html">format-proposal.md</a>. A snapshot
-of what remains undone before measurement is <a href="plan/0001-durable-book-format/undone-review.html">undone-review.md</a>.</p>
+of what remains undone before measurement is <a href="plan/0001-durable-book-format/undone-review.html">undone-review.md</a>. The cast's
+review of the milestone from the humanist standpoint is
+<a href="plan/0001-durable-book-format/humanist-review.html">humanist-review.md</a>.</p>
 <h2 id="build-sequence"><a class="header" href="#build-sequence">Build sequence</a></h2>
 <h3 id="measure-channel"><a class="header" href="#measure-channel">Measure the print-and-damage channel</a></h3>
 <ul>
@@ -550,9 +554,25 @@ fallback if the eight glyphs cannot be separated at the required visual distance
 <p>The floor is settled at tally strokes (<a href="plan/0001-durable-book-format/../../call/0008-assumed-knowledge-floor.html">call/0008</a>).
 Draft the trilingual preamble by the pedagogy in
 <a href="plan/0001-durable-book-format/../../call/0013-preamble-pedagogy-and-floor.html">call/0013</a>, which teaches the budget's
-arithmetic from that floor. English and Mandarin are joined by Spanish as the third language
+arithmetic from that floor, and teach subtraction from strokes before the first repair
+figure uses it (<a href="plan/0001-durable-book-format/../../call/0016-subtraction-taught-from-the-floor.html">call/0016</a>). English
+and Mandarin are joined by Spanish as the third language
 (<a href="plan/0001-durable-book-format/../../call/0007-preamble-languages.html">call/0007</a>). Two working drafts are under way, in
-<a href="plan/0001-durable-book-format/preamble-draft.html">preamble-draft.md</a> and <a href="plan/0001-durable-book-format/preamble-proposal-nuala.html">preamble-proposal-nuala.md</a>.</p>
+<a href="plan/0001-durable-book-format/preamble-draft.html">preamble-draft.md</a> and <a href="plan/0001-durable-book-format/preamble-proposal-nuala.html">preamble-proposal-nuala.md</a>.
+The gate includes a trilingual equivalence review: the three texts must carry identical
+mathematical meaning, per <a href="plan/0001-durable-book-format/../../cast/nuala-numeral-linguist.html">Nuala</a>'s standard.</p>
+<h3 id="blind-decode-trial"><a class="header" href="#blind-decode-trial">Blind hand-decode trial</a></h3>
+<ul>
+<li>depends: #draft-preamble</li>
+<li>verify: attested operator</li>
+</ul>
+<p>A person who has never seen the spec recovers a page from the printed preamble alone.
+<a href="plan/0001-durable-book-format/format-proposal.html">format-proposal.md</a> names this trial as the preamble's own test, and
+every failure becomes a preamble fix. One pass runs figure-only: the reader works from the
+shared figures with the prose in a language they cannot read, which tests that the figures
+carry the load and de-risks the language choice of
+<a href="plan/0001-durable-book-format/../../call/0007-preamble-languages.html">call/0007</a> across the horizon of
+<a href="plan/0001-durable-book-format/../../call/0015-longevity-and-positioning.html">call/0015</a>.</p>
 <h3 id="scope-rust-pipeline"><a class="header" href="#scope-rust-pipeline">Scope the cross-platform Rust pipeline</a></h3>
 <ul>
 <li>depends: #design-alphabet, #draft-preamble</li>
@@ -562,6 +582,12 @@ arithmetic from that floor. English and Mandarin are joined by Spanish as the th
 bidirectional FUSE wrapper for Linux and macOS. Author the <code>.allium</code> behaviour spec
 (and any <code>.tla</code> timing spec) before the code, per the project's specification-driven
 discipline, and record the build in <code>.host-software</code> as per-platform builds.</p>
+<p>The format spec includes printed known-answer tests: a worked specimen with its exact
+bytes and both digests, so a rebuilt decoder is checked against the book's own pages
+(<a href="plan/0001-durable-book-format/../../cast/fintan-tool-rebuilder.html">Fintan</a>'s rebuild check). The browser-based decode
+path that <a href="plan/0001-durable-book-format/../../cast/aoife-casual-reader.html">Aoife</a>'s modality rests on, a reader with
+nothing installed, is out of this task's scope and is owed its own milestone once the
+format settles.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="software-where"><a class="header" href="#software-where">Software: where</a></h1>
 <p>The action this project produces. Each component is a bare object store with worktrees, not committed into this repo; the recipe below is the reproducibility anchor. Materialize the worktrees locally with:</p>
 <pre><code>host-lifecycle software --materialize .
